@@ -3,219 +3,586 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kushal Mundra — AI/ML Engineer</title>
-  <meta name="description" content="MSc Computer Science @ University of Warwick. AI/ML Engineer specialising in LLM systems, NLP, and software engineering.">
+  <title>Kushal Mundra | AI Engineer</title>
+  <meta name="description" content="Kushal Mundra, AI engineer. MSc Computer Science (Distinction), University of Warwick. Builds LLM agents, RAG systems and voice AI. Open to AI/ML roles in India." />
+  <meta name="theme-color" content="#07080d" />
+  <meta property="og:title" content="Kushal Mundra | AI Engineer" />
+  <meta property="og:description" content="LLM agents, RAG and voice AI. MSc Computer Science (Distinction), University of Warwick." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kushalmundra26.github.io/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%2307080d'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='url(%23g)'%3EKM%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<canvas id="particles-canvas"></canvas>
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.8 18.3 5.1 18.3 5.1c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0z"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M6.6 7.2l3.5 3.3M17.4 7.2l-3.5 3.3M6.6 16.8l3.5-3.3M17.4 16.8l-3.5-3.3"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-game" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3M15.5 12h.01M18 13.5h.01"/></symbol>
+  <symbol id="i-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><circle cx="11" cy="11" r="2"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 9h5M2 15h5M17 9h5M17 15h5"/></symbol>
+  <symbol id="i-gavel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 16.6 6.5 19.5l1-6.3L3 8.9 9 8z"/></symbol>
+</svg>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">KM</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<!-- ===== Nav ===== -->
+<nav class="nav" aria-label="Main">
+  <a href="#top" class="nav-logo">kushal<span>.</span>mundra</a>
   <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="education.html">Education</a></li>
-    <li><a href="experience.html">Experience</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="research.html">Research</a></li>
-    <li><a href="competitive-coding.html">Coding</a></li>
-    <li><a href="skills.html">Skills</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="https://e115b4a3-746b-4a29-97e9-a2b70a8100f8.filesusr.com/ugd/8507c9_40ca896b2fe94792b3b32b92232bef9d.pdf" class="nav-cv" target="_blank">CV ↓</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="nav-toggle">
-    <span></span><span></span><span></span>
-  </div>
+  <a href="assets/Kushal_Mundra_CV.pdf" class="nav-cta" target="_blank" rel="noopener">Resume</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
 </nav>
 
-<div class="page-wrapper">
+<main id="top">
 
-  <!-- HERO -->
-  <section style="padding:0; max-width:100%;">
-    <div class="hero">
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="hero-status">
-            <span class="status-dot"></span>
-            Open to Graduate Opportunities — UK
-          </div>
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <canvas id="graph" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="hero-badge fade-up"><span class="pulse"></span>Open to AI / ML roles in India · can start now</div>
+      <h1 class="hero-title">
+        <span class="line"><span class="word">Kushal</span></span>
+        <span class="line"><span class="word grad">Mundra</span></span>
+      </h1>
+      <p class="hero-role fade-up d1"><span class="prompt">&gt;</span> <span class="typed" data-roles='["AI Engineer", "Machine Learning Engineer", "LLM & GenAI Developer", "Data Scientist"]'></span><span class="caret"></span></p>
+      <p class="hero-lead fade-up d2">I build AI that works outside the notebook. My voice agent <strong>Kira</strong> sat in live meetings and answered on Claude, and my MSc dissertation grounded open LLMs in a knowledge graph, taking their consistency from <strong>9.5% to 71%</strong>.</p>
+      <div class="hero-actions fade-up d3">
+        <a href="#work" class="btn btn-primary" data-magnetic>See my work <svg><use href="#i-arrow"/></svg></a>
+        <a href="assets/Kushal_Mundra_CV.pdf" class="btn btn-ghost" target="_blank" rel="noopener" data-magnetic>Download CV <svg><use href="#i-down"/></svg></a>
+      </div>
+      <div class="hero-meta fade-up d4">
+        <span><svg><use href="#i-pin"/></svg>Kolkata, India</span>
+        <span><svg><use href="#i-cap"/></svg>MSc Computer Science, Warwick (Distinction)</span>
+        <span><svg><use href="#i-doc"/></svg>3 peer-reviewed papers</span>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"></div>
+  </header>
 
-          <h1 class="hero-name">
-            <span class="first">Kushal</span><br>
-            <span class="last">Mundra</span>
-          </h1>
+  <!-- ===== Stats ===== -->
+  <section class="stats" aria-label="Highlights">
+    <div class="container">
+      <div class="stats-grid reveal">
+        <div class="stat"><div class="stat-num"><span data-count="71">0</span><span class="unit">%</span></div><div class="stat-label">LLM consistency with GraphRAG, up from 9.5%</div></div>
+        <div class="stat"><div class="stat-num">Top <span data-count="1.2">0</span><span class="unit">%</span></div><div class="stat-label">HackerRank Project Euler+, out of 251,755</div></div>
+        <div class="stat"><div class="stat-num"><span data-count="3">0</span></div><div class="stat-label">Papers at Springer AIED, ICDMAI and ICCE</div></div>
+        <div class="stat"><div class="stat-num"><span data-count="16">0</span></div><div class="stat-label">Projects across AI, software and design</div></div>
+      </div>
+    </div>
+  </section>
 
-          <p class="hero-tagline">
-            <span id="typewriter"></span>
-          </p>
-
-          <p class="hero-bio">
-            MSc Computer Science student at the <strong>University of Warwick</strong>, with hands-on experience building production-level AI tools — from LLM-powered voice assistants to multi-agent systems. Passionate about turning complex problems into elegant, intelligent solutions.
-          </p>
-
-          <div class="hero-btns">
-            <a href="contact.html" class="btn btn-primary">Get In Touch</a>
-            <a href="projects.html" class="btn btn-outline">View Projects</a>
-            <a href="https://e115b4a3-746b-4a29-97e9-a2b70a8100f8.filesusr.com/ugd/8507c9_40ca896b2fe94792b3b32b92232bef9d.pdf" class="btn btn-outline" target="_blank">Download CV ↓</a>
-          </div>
-
-          <div class="hero-socials">
-            <a href="https://www.linkedin.com/in/kushal-mundra-425345220/" target="_blank" title="LinkedIn">in</a>
-            <a href="https://github.com/kushalMundra26" target="_blank" title="GitHub">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            </a>
-            <a href="http://www.instagram.com/kushal_mundra26" target="_blank" title="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-          </div>
+  <!-- ===== About ===== -->
+  <section id="about" class="section">
+    <div class="container about-grid">
+      <div class="portrait-wrap reveal">
+        <div class="portrait-ring" aria-hidden="true"></div>
+        <div class="portrait">
+          <img src="assets/kushal.jpg" alt="Kushal Mundra smiling in front of a wall of purple bougainvillea" loading="lazy" width="720" height="1280" />
         </div>
-
-        <div class="hero-photo-wrap">
-          <div class="photo-glow"></div>
-          <div class="photo-frame"></div>
-          <img
-            src="https://static.wixstatic.com/media/8507c9_a663f33565224f7fb8fcadc758ea8d09~mv2.jpg/v1/crop/x_0,y_20,w_720,h_720/fill/w_347,h_347,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20230223-WA0048_edited_edited.jpg"
-            alt="Kushal Mundra"
-            class="hero-photo"
-          />
+      </div>
+      <div class="about-text">
+        <span class="eyebrow reveal">About me</span>
+        <h2 class="section-title reveal">I like AI that holds up when real people use it.</h2>
+        <p class="reveal">I'm an AI engineer from Kolkata. I finished my <strong>MSc in Computer Science at the University of Warwick with a Distinction</strong> in 2026, after a BSc (Hons.) in Computer Science at FLAME University.</p>
+        <p class="reveal">Most of my work sits where language models meet real systems. At FLAME's AI Center I built and deployed <strong>Kira</strong>, a voice assistant that listens in live meetings and speaks only when called. At <strong>IIT Bombay</strong> I helped study how students use AI coding assistants in programming contests, which became a Springer paper.</p>
+        <p class="reveal">I also care a lot about measuring whether a model is actually right. In my dissertation the first metric I used overstated quality by about 20 points. Catching that changed how I reported every result after it.</p>
+        <div class="about-facts" data-stagger>
+          <div class="fact reveal"><div class="fact-k">Based in</div><div class="fact-v">Kolkata, India</div></div>
+          <div class="fact reveal"><div class="fact-k">Focus</div><div class="fact-v">LLMs, RAG, agents, NLP</div></div>
+          <div class="fact reveal"><div class="fact-k">Languages</div><div class="fact-v">Python, C++, C, Go, SQL</div></div>
+          <div class="fact reveal"><div class="fact-k">Available</div><div class="fact-v">Immediately</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STATS -->
-  <div class="stats-bar">
-    <div class="stats-inner">
-      <div class="reveal stagger-1">
-        <span class="stat-num" data-target="3" data-suffix="">3</span>
-        <span class="stat-label">Published Papers</span>
-      </div>
-      <div class="reveal stagger-2">
-        <span class="stat-num" data-target="11" data-suffix="">11</span>
-        <span class="stat-label">Projects Built</span>
-      </div>
-      <div class="reveal stagger-3">
-        <span class="stat-num" data-target="8" data-suffix="">8</span>
-        <span class="stat-label">Internship & Volunteer Roles</span>
-      </div>
-      <div class="reveal stagger-4">
-        <span class="stat-num">Top 1.2%</span>
-        <span class="stat-label">HackerRank Global</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- EXPLORE -->
-  <section style="max-width:100%; padding:0;">
-    <div class="section-inner">
-      <p class="section-label">Explore</p>
-      <h2 class="section-title">What I Bring to the Table</h2>
-
-      <div class="quick-nav-grid">
-        <a href="education.html" class="quick-nav-card reveal stagger-1">
-          <div class="quick-nav-icon">🎓</div>
-          <div>
-            <span class="quick-nav-label">Education</span>
-            <span class="quick-nav-sub">MSc Warwick · BSc FLAME University</span>
-          </div>
-        </a>
-        <a href="experience.html" class="quick-nav-card reveal stagger-2">
-          <div class="quick-nav-icon">💼</div>
-          <div>
-            <span class="quick-nav-label">Experience</span>
-            <span class="quick-nav-sub">AI Center · IIT Bombay · NGOs & More</span>
-          </div>
-        </a>
-        <a href="projects.html" class="quick-nav-card reveal stagger-3">
-          <div class="quick-nav-icon">⚙️</div>
-          <div>
-            <span class="quick-nav-label">Projects</span>
-            <span class="quick-nav-sub">11 technical & creative builds</span>
-          </div>
-        </a>
-        <a href="research.html" class="quick-nav-card reveal stagger-4">
-          <div class="quick-nav-icon">📄</div>
-          <div>
-            <span class="quick-nav-label">Research Papers</span>
-            <span class="quick-nav-sub">3 published — Springer & APSCE</span>
-          </div>
-        </a>
-        <a href="skills.html" class="quick-nav-card reveal stagger-5">
-          <div class="quick-nav-icon">🛠️</div>
-          <div>
-            <span class="quick-nav-label">Skills</span>
-            <span class="quick-nav-sub">Python, PyTorch, LLMs & more</span>
-          </div>
-        </a>
-        <a href="contact.html" class="quick-nav-card reveal stagger-6">
-          <div class="quick-nav-icon">✉️</div>
-          <div>
-            <span class="quick-nav-label">Get In Touch</span>
-            <span class="quick-nav-sub">Available for grad roles in the UK</span>
-          </div>
-        </a>
+  <!-- ===== Work ===== -->
+  <section id="work" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Selected work</span>
+        <h2 class="section-title reveal">Things I've built</h2>
+        <p class="section-sub reveal">Two projects I'd most like to talk about in an interview, then everything else.</p>
       </div>
 
-      <!-- Extracurriculars -->
-      <div class="card reveal" style="margin-top:2.5rem;">
-        <div style="font-family:'Orbitron',sans-serif; font-size:0.72rem; letter-spacing:3px; color:var(--cyan); text-transform:uppercase; margin-bottom:1.5rem;">Beyond the Code</div>
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem;">
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <div style="font-size:1.4rem; flex-shrink:0;">🕺</div>
-            <div>
-              <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.15rem;">Hip Hop Dance</div>
-              <div style="color:var(--cyan); font-size:0.78rem; font-weight:600;">President, Dance Club</div>
+      <div class="featured">
+        <!-- Kira -->
+        <article class="feature reveal" data-animate>
+          <div class="feature-visual" aria-hidden="true">
+            <div class="pipeline">
+              <div class="wave"></div>
+              <div class="stages">
+                <div class="stage"><b>Listen</b>Deepgram STT</div>
+                <div class="stage"><b>Gate</b>wake word</div>
+                <div class="stage"><b>Think</b>Claude 3.5</div>
+                <div class="stage"><b>Speak</b>Resemble TTS</div>
+              </div>
+              <div class="chat">
+                <div class="bubble me">So we push the review to next week?</div>
+                <div class="bubble skip">no wake word · LLM not called</div>
+                <div class="bubble me">Kira, when is the next review?</div>
+                <div class="bubble">Thursday at 3 PM. It's on the calendar.</div>
+              </div>
             </div>
           </div>
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <div style="font-size:1.4rem; flex-shrink:0;">🏀</div>
-            <div>
-              <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.15rem;">Basketball</div>
-              <div style="color:var(--text-sec); font-size:0.78rem;">Favourite sport</div>
+          <div class="feature-body">
+            <span class="feature-tag">Deployed · AI Center, FLAME University · 2025</span>
+            <h3 class="feature-title">Kira: a voice AI agent for live meetings</h3>
+            <p class="feature-desc">Kira joins a meeting room, listens to everyone, and answers out loud only when someone says its name. It can search the web and manage a calendar in the middle of a conversation.</p>
+            <ul class="feature-list">
+              <li>Real-time pipeline over <strong>WebRTC (LiveKit)</strong>: Deepgram speech-to-text, <strong>Claude 3.5 Sonnet</strong>, Resemble text-to-speech.</li>
+              <li>Turn-taking with Silero VAD, and the running meeting transcript passed back in as context so answers stay on topic.</li>
+              <li>After launch it replied to every sentence. The wake-word check ran after the request had already reached the LLM, so I moved it in front of the call. That fixed it and cut a lot of wasted API calls.</li>
+            </ul>
+            <div class="feature-foot">
+              <div class="tags"><span class="tag">Python</span><span class="tag">LiveKit</span><span class="tag">Claude API</span><span class="tag">Deepgram</span><span class="tag">Tool calling</span></div>
+              <a class="link-arrow" href="https://github.com/kushalMundra26/Kira_Teaching_Assistant_Final" target="_blank" rel="noopener">View code <svg><use href="#i-out"/></svg></a>
             </div>
           </div>
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <div style="font-size:1.4rem; flex-shrink:0;">🛼</div>
-            <div>
-              <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.15rem;">Skating</div>
-              <div style="color:var(--text-sec); font-size:0.78rem;">Recreational</div>
+        </article>
+
+        <!-- PersonaGraph -->
+        <article class="feature reveal" data-animate>
+          <div class="feature-visual" aria-hidden="true">
+            <canvas id="kg"></canvas>
+            <div class="bar-compare">
+              <div>Persona consistency</div>
+              <div class="bar-row before"><div class="bar-head"><span>Without graph</span><b>9.5%</b></div><div class="bar"><i></i></div></div>
+              <div class="bar-row after"><div class="bar-head"><span>With GraphRAG</span><b>71%</b></div><div class="bar"><i></i></div></div>
+            </div>
+            <div class="kg-legend"><span>950 nodes</span><span>6 entity types</span><span>retrieved per persona</span></div>
+          </div>
+          <div class="feature-body">
+            <span class="feature-tag">MSc dissertation · University of Warwick · 2026</span>
+            <h3 class="feature-title">PersonaGraph: grounding LLMs in a knowledge graph</h3>
+            <p class="feature-desc">Can a knowledge graph stop an LLM from contradicting the persona it's meant to play? I built the whole pipeline to find out, from raw government PDFs to the statistics at the end.</p>
+            <div class="feature-metric">
+              <div><div class="metric-v grad">9.5 → 71%</div><div class="metric-k">persona consistency</div></div>
+              <div><div class="metric-v">500</div><div class="metric-k">synthetic personas</div></div>
+              <div><div class="metric-v">5 × 100</div><div class="metric-k">models × test cases</div></div>
+            </div>
+            <ul class="feature-list">
+              <li>Pulled statistics out of 4 government PDF reports and generated 500 synthetic personas, checked against the source with chi-square tests (<strong>25 of 28 attributes matched</strong>).</li>
+              <li>Built a knowledge graph (950 nodes, 6 entity types) and a <strong>GraphRAG</strong> step that puts each persona's context into the prompt for Qwen 3.5, Gemma 4 and Mistral.</li>
+              <li>Ran the experiments on Warwick's GPU cluster. The gain held for every model (Wilcoxon p &lt; 0.001), and a plain-text baseline did about as well as the graph, so the real win was giving the model the right facts.</li>
+            </ul>
+            <div class="feature-foot">
+              <div class="tags"><span class="tag">Python</span><span class="tag">NetworkX</span><span class="tag">Ollama</span><span class="tag">SLURM</span><span class="tag">BERTScore</span><span class="tag">NLI</span></div>
+              <a class="link-arrow" href="https://github.com/kushalMundra26/PersonaGraph_Diss" target="_blank" rel="noopener">View code <svg><use href="#i-out"/></svg></a>
             </div>
           </div>
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <div style="font-size:1.4rem; flex-shrink:0;">🏸</div>
-            <div>
-              <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.15rem;">Badminton</div>
-              <div style="color:var(--text-sec); font-size:0.78rem;">Recreational</div>
-            </div>
-          </div>
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <div style="font-size:1.4rem; flex-shrink:0;">♟️</div>
-            <div>
-              <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.15rem;">Chess</div>
-              <div style="color:var(--text-sec); font-size:0.78rem;">Strategic thinking</div>
-            </div>
-          </div>
-          <div style="display:flex; gap:0.8rem; align-items:flex-start;">
-            <div style="font-size:1.4rem; flex-shrink:0;">🏊</div>
-            <div>
-              <div style="font-weight:700; font-size:0.92rem; margin-bottom:0.15rem;">Swimming</div>
-              <div style="color:var(--text-sec); font-size:0.78rem;">Recreational</div>
-            </div>
-          </div>
-        </div>
-        <p style="color:var(--text-sec); font-size:0.85rem; margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--card-border);">
-          The same discipline and creativity I bring to the dance floor and basketball court shapes how I tackle every engineering challenge. The <strong style="color:var(--text);">Trailblazer Award</strong> (2022–23 & 2023–24) at FLAME University was awarded for excelling across academics, sports, and culture — not just code.
-        </p>
+        </article>
+      </div>
+
+      <!-- More projects -->
+      <div class="filters reveal" role="group" aria-label="Filter projects">
+        <button class="filter active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="ai" aria-pressed="false">AI &amp; ML</button>
+        <button class="filter" data-filter="software" aria-pressed="false">Software</button>
+        <button class="filter" data-filter="creative" aria-pressed="false">Games, AR &amp; design</button>
+      </div>
+
+      <div class="grid" data-stagger>
+        <article class="card reveal has-link" data-cat="ai">
+          <a class="card-link" href="https://github.com/kushalMundra26/Tweet-Sentiment-Classification" target="_blank" rel="noopener" aria-label="Tweet sentiment code on GitHub"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-brain"/></svg></div><span class="card-year">2025</span></div>
+          <h3>Tweet Sentiment Classification</h3>
+          <div class="card-where">SemEval 2017 · Warwick</div>
+          <p>Compared 7 classifiers, from SVM and logistic regression to a BiLSTM with self-attention and a fine-tuned RoBERTa. RoBERTa reached a <strong>macro F1 of 0.8552</strong> across three test sets. The preprocessing handles emoticons, slang and negation.</p>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">RoBERTa</span><span class="tag">NLP</span></div>
+        </article>
+
+        <article class="card reveal has-link" data-cat="ai">
+          <a class="card-link" href="https://github.com/kushalMundra26/Marginal-Gain-Auction-Bot" target="_blank" rel="noopener" aria-label="Auction bot code on GitHub"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-gavel"/></svg></div><span class="card-year">2025</span></div>
+          <h3>Marginal-Gain Auction Bot</h3>
+          <div class="card-where">Multi-agent systems · Warwick</div>
+          <p>A bidding agent for a multi-round auction game. Bids come from the partial derivatives of a Cobb-Douglas scoring function, with bid shading and detection of four opponent types. It won most rounds of a <strong>10-bot, 50-auction tournament</strong>, averaging over 13,500 points.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Game theory</span><span class="tag">Agents</span></div>
+        </article>
+
+        <article class="card reveal has-link" data-cat="ai">
+          <a class="card-link" href="https://doi.org/10.1007/978-981-97-3242-5_20" target="_blank" rel="noopener" aria-label="NSLNet paper on Springer"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-eye"/></svg></div><span class="card-year">2023</span></div>
+          <h3>NSLNet: Steel Surface Defect Detection</h3>
+          <div class="card-where">Published at Springer ICDMAI 2024</div>
+          <p>Classified surface defects on the NEU steel dataset using GLCM texture features with Random Forest and neural networks, reaching <strong>89% accuracy</strong>. SHAP shows which features drove each prediction.</p>
+          <div class="tags"><span class="tag">Scikit-learn</span><span class="tag">SHAP</span><span class="tag">Computer vision</span></div>
+        </article>
+
+        <article class="card reveal" data-cat="ai">
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-chart"/></svg></div><span class="card-year">2026</span></div>
+          <h3>Protein Expression from Tissue Images</h3>
+          <div class="card-where">Coursework · Warwick</div>
+          <p>Predicted protein expression from tissue images by combining colour features with ResNet-18 embeddings in a Random Forest regressor. <strong>Pearson r = 0.69</strong> on a specimen the model never saw.</p>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">ResNet-18</span><span class="tag">Regression</span></div>
+        </article>
+
+        <article class="card reveal" data-cat="ai">
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-eye"/></svg></div><span class="card-year">2026</span></div>
+          <h3>Image Classification with Transfer Learning</h3>
+          <div class="card-where">Coursework · Warwick</div>
+          <p>Fine-tuned ResNet-18 to <strong>85% test accuracy</strong> and compared it against two classic baselines: PCA with an SVM, and HOG features with a bag of visual words.</p>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">CNNs</span></div>
+        </article>
+
+        <article class="card reveal" data-cat="software ai">
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-chart"/></svg></div><span class="card-year">2024</span></div>
+          <h3>Airbnb NYC Analysis at Scale</h3>
+          <div class="card-where">Big data</div>
+          <p>Processed New York Airbnb listings with PySpark and built models to forecast occupancy and pricing.</p>
+          <div class="tags"><span class="tag">PySpark</span><span class="tag">ML models</span><span class="tag">Big data</span></div>
+        </article>
+
+        <article class="card reveal has-link" data-cat="software">
+          <a class="card-link" href="https://github.com/kushalMundra26/Kuga-DBMS" target="_blank" rel="noopener" aria-label="Kuga DBMS code on GitHub"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-db"/></svg></div><span class="card-year">2024</span></div>
+          <h3>Kuga DBMS</h3>
+          <div class="card-where">Database systems</div>
+          <p>A small database management system written from scratch in Python, with its own query syntax for creating tables, inserting, updating, deleting and searching records, plus CSV import and export.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Databases</span><span class="tag">Parsing</span></div>
+        </article>
+
+        <article class="card reveal has-link" data-cat="software">
+          <a class="card-link" href="https://github.com/kushalMundra26/SoftwareEngeeringProject" target="_blank" rel="noopener" aria-label="Club Comms code on GitHub"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-code"/></svg></div><span class="card-year">2023</span></div>
+          <h3>Club Comms</h3>
+          <div class="card-where">Software engineering · FLAME University</div>
+          <p>An event platform for FLAME's student clubs, built with two teammates. Clubs can track events and collect feedback in one place.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span></div>
+        </article>
+
+        <article class="card reveal has-link" data-cat="creative software">
+          <a class="card-link" href="https://github.com/kushalMundra26/Teleporter-Maze-Game" target="_blank" rel="noopener" aria-label="Teleporter Maze code on GitHub"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-game"/></svg></div><span class="card-year">2024</span></div>
+          <h3>Teleporter Maze Game</h3>
+          <div class="card-where">Pygame</div>
+          <p>A maze game with two levels, teleporters that jump you across the map, a timer, and a star rating based on how fast you finish.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Pygame</span><span class="tag">Game dev</span></div>
+        </article>
+
+        <article class="card reveal" data-cat="creative">
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-cube"/></svg></div><span class="card-year">2023</span></div>
+          <h3>AR Classroom App</h3>
+          <div class="card-where">IIT Bombay</div>
+          <p>An Android AR app that tracks 3D objects to explain electromagnetism, with interactive controls for students. It was used in live teaching sessions.</p>
+          <div class="tags"><span class="tag">Unity</span><span class="tag">ARCore</span><span class="tag">C#</span></div>
+        </article>
+
+        <article class="card reveal has-link" data-cat="creative">
+          <a class="card-link" href="https://gd.games/instant-builds/5faca452-0e10-412f-b0e1-45702635c0c0" target="_blank" rel="noopener" aria-label="Play Detective Dave"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-game"/></svg></div><span class="card-year">FLAME</span></div>
+          <h3>Detective Dave</h3>
+          <div class="card-where">Playable in the browser</div>
+          <p>A 2D detective game that teaches Prolog. You crack each case by reasoning through clauses, so the logic is the gameplay.</p>
+          <div class="tags"><span class="tag">GDevelop</span><span class="tag">Prolog</span><span class="tag">Game design</span></div>
+        </article>
+
+        <article class="card reveal has-link" data-cat="creative">
+          <a class="card-link" href="https://www.figma.com/proto/iFibzePcIdSs7twHeVUrTu/BookBazaar-New-UI?page-id=158%3A3&amp;type=design&amp;node-id=214-30392&amp;viewport=355%2C291%2C0.1&amp;t=i73vy8MpxexXTqaP-1&amp;scaling=scale-down&amp;starting-point-node-id=192%3A25658" target="_blank" rel="noopener" aria-label="BookBazaar Figma prototype"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-pen"/></svg></div><span class="card-year">FLAME</span></div>
+          <h3>BookBazaar</h3>
+          <div class="card-where">UI/UX design</div>
+          <p>Designed the full interface of a campus book-exchange app in Figma with two teammates.</p>
+          <div class="tags"><span class="tag">Figma</span><span class="tag">Prototyping</span></div>
+        </article>
+
+        <article class="card reveal has-link" data-cat="creative">
+          <a class="card-link" href="https://drive.google.com/file/d/1AUDUrSqdNc3H0nK4-dHqDyJSHQX0J9_g/view" target="_blank" rel="noopener" aria-label="Watch the Pixar lamp animation"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-film"/></svg></div><span class="card-year">Blender</span></div>
+          <h3>Pixar Lamp Animation</h3>
+          <div class="card-where">3D animation</div>
+          <p>Modelled, rigged and animated the Pixar lamp in Blender.</p>
+          <div class="tags"><span class="tag">Blender</span><span class="tag">Rigging</span></div>
+        </article>
+
+        <article class="card reveal has-link" data-cat="creative">
+          <a class="card-link" href="https://dip.flame.edu.in/youtube-video/a-brew-of-coffee-and-culture-kodagu-karnataka/" target="_blank" rel="noopener" aria-label="Watch the documentary"><svg><use href="#i-out"/></svg></a>
+          <div class="card-top"><div class="card-icon"><svg><use href="#i-film"/></svg></div><span class="card-year">FLAME</span></div>
+          <h3>A Brew of Coffee and Culture</h3>
+          <div class="card-where">Field research · Documentary</div>
+          <p>Field research and a short documentary on the Kodava community of Kodagu, Karnataka, and how coffee shapes their rituals and livelihoods.</p>
+          <div class="tags"><span class="tag">Field research</span><span class="tag">Film</span></div>
+        </article>
       </div>
     </div>
   </section>
 
-</div>
+  <!-- ===== Experience ===== -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Experience</span>
+        <h2 class="section-title reveal">Where I've worked</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-line" aria-hidden="true"><i></i></div>
+
+        <div class="job">
+          <span class="job-dot" aria-hidden="true"></span>
+          <div class="job-head"><h3 class="job-role">Software Engineering Intern</h3><span class="job-date">Apr 2025 – Jul 2025</span></div>
+          <div class="job-org">AI Center, FLAME University <span>· Pune</span></div>
+          <ul>
+            <li>Built and deployed <strong>Kira</strong>, a voice AI agent for live meetings, on LiveKit with Deepgram, <strong>Claude 3.5 Sonnet</strong> and Resemble.</li>
+            <li>Wrote tool functions with typed inputs and error handling for web search and calendar management, which the LLM calls mid-conversation.</li>
+            <li>Tracked down why the agent replied to every utterance and moved the wake-word gate ahead of the LLM call, which fixed it and cut API cost.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">LiveKit</span><span class="tag">Claude API</span><span class="tag">Async pipelines</span></div>
+        </div>
+
+        <div class="job">
+          <span class="job-dot" aria-hidden="true"></span>
+          <div class="job-head"><h3 class="job-role">Project Technical Assistant</h3><span class="job-date">Sept 2024 – Feb 2025</span></div>
+          <div class="job-org">Indian Institute of Technology Bombay <span>· Mumbai</span></div>
+          <ul>
+            <li>Evaluated 6 AI coding assistants and benchmarked the top two, <strong>Amazon Q and Tabnine</strong>, across 9 live contests on LeetCode, CodeChef and Codeforces.</li>
+            <li>Designed a rubric for judging AI-generated code and ran a user study with <strong>18 participants</strong>.</li>
+            <li>Co-authored the resulting paper, published at <strong>AIED 2025 (Springer)</strong>.</li>
+          </ul>
+          <div class="tags"><span class="tag">AI evaluation</span><span class="tag">User studies</span><span class="tag">Research</span></div>
+        </div>
+
+        <div class="job">
+          <span class="job-dot" aria-hidden="true"></span>
+          <div class="job-head"><h3 class="job-role">AR Developer Intern</h3><span class="job-date">May 2023 – Aug 2023</span></div>
+          <div class="job-org">Indian Institute of Technology Bombay <span>· Remote</span></div>
+          <ul>
+            <li>Built an AR classroom app in Unity and ARCore with 3D object tracking and interactive controls for teaching electromagnetism.</li>
+            <li>The app was used in live teaching sessions.</li>
+          </ul>
+          <div class="tags"><span class="tag">Unity</span><span class="tag">ARCore</span><span class="tag">C#</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Research ===== -->
+  <section id="research" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Research</span>
+        <h2 class="section-title reveal">Published papers</h2>
+        <p class="section-sub reveal">Three peer-reviewed papers on human-AI interaction, explainable computer vision and AI ethics.</p>
+      </div>
+      <div class="papers" data-stagger>
+        <a class="paper reveal" href="https://doi.org/10.1007/978-3-031-99261-2_17" target="_blank" rel="noopener">
+          <div class="paper-venue">AIED 2025<small>Springer CCIS vol. 2590</small></div>
+          <div>
+            <h3>AI Coding Assistants in Competitive Programming: Empirical Studies from India on Human-AI Interactions in Learning, Problem Solving, and Curiosity Development Perspectives</h3>
+            <div class="authors">Joshi, O., <b>Mundra, K.</b>, Yadav, D., Das, S.</div>
+            <p>How Amazon Q and Tabnine change the way students learn and solve problems in timed contests, based on a study at IIT Bombay.</p>
+          </div>
+          <span class="paper-go"><svg><use href="#i-out"/></svg></span>
+        </a>
+        <a class="paper reveal" href="https://doi.org/10.1007/978-981-97-3242-5_20" target="_blank" rel="noopener">
+          <div class="paper-venue">ICDMAI 2024<small>Springer LNNS vol. 997</small></div>
+          <div>
+            <h3>From Pixels to Insight: Enhancing Metallic Component Defect Detection with GLCM Features and AI Explainability</h3>
+            <div class="authors">Varsha, A., <b>Mundra, K.</b>, Singh, A., Bhosale, H., Chattopadhyay, C., Valadi, J.</div>
+            <p>GLCM texture features and SHAP explanations for detecting surface defects in steel, at 89% accuracy on the NEU dataset.</p>
+          </div>
+          <span class="paper-go"><svg><use href="#i-out"/></svg></span>
+        </a>
+        <a class="paper reveal" href="https://library.apsce.net/index.php/ICCE/article/view/1440" target="_blank" rel="noopener">
+          <div class="paper-venue">ICCE 2023<small>APSCE</small></div>
+          <div>
+            <h3>Fostering Ethics in AI: Perceptions from the Indian AI Curriculum</h3>
+            <div class="authors"><b>Mundra, K.</b> et al.</div>
+            <p>How AI ethics is taught and understood in Indian AI courses, and where the gaps are.</p>
+          </div>
+          <span class="paper-go"><svg><use href="#i-out"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Skills</span>
+        <h2 class="section-title reveal">What I work with</h2>
+      </div>
+    </div>
+    <div class="marquee reveal" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="chip hot">Python</span><span class="chip">PyTorch</span><span class="chip hot">LLMs</span><span class="chip">Hugging Face</span><span class="chip hot">RAG</span><span class="chip">C</span><span class="chip">Claude API</span><span class="chip hot">Agents &amp; tool calling</span><span class="chip">Transformers</span><span class="chip">Scikit-learn</span><span class="chip hot">NLP</span><span class="chip">Prompt engineering</span>
+        <span class="chip hot">Python</span><span class="chip">PyTorch</span><span class="chip hot">LLMs</span><span class="chip">Hugging Face</span><span class="chip hot">RAG</span><span class="chip">C</span><span class="chip">Claude API</span><span class="chip hot">Agents &amp; tool calling</span><span class="chip">Transformers</span><span class="chip">Scikit-learn</span><span class="chip hot">NLP</span><span class="chip">Prompt engineering</span>
+      </div>
+    </div>
+    <div class="marquee reverse reveal" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="chip">C++</span><span class="chip">SQL</span><span class="chip hot">LiveKit / WebRTC</span><span class="chip">Git</span><span class="chip">Linux</span><span class="chip hot">SLURM GPU clusters</span><span class="chip">PySpark</span><span class="chip">Pandas</span><span class="chip">NetworkX</span><span class="chip hot">Ollama</span><span class="chip">Flask</span><span class="chip">Haskell</span><span class="chip">Unity</span><span class="chip">Figma</span>
+        <span class="chip">C++</span><span class="chip">SQL</span><span class="chip hot">LiveKit / WebRTC</span><span class="chip">Git</span><span class="chip">Linux</span><span class="chip hot">SLURM GPU clusters</span><span class="chip">PySpark</span><span class="chip">Pandas</span><span class="chip">NetworkX</span><span class="chip hot">Ollama</span><span class="chip">Flask</span><span class="chip">Haskell</span><span class="chip">Unity</span><span class="chip">Figma</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="skill-groups" data-stagger>
+        <div class="skill-group reveal"><h3><i></i>AI &amp; ML</h3><ul><li>LLMs, RAG and GraphRAG</li><li>Agents and tool calling</li><li>Fine-tuning Transformers</li><li>PyTorch, Hugging Face</li><li>Scikit-learn, SHAP</li><li>Evaluation: BERTScore, NLI</li></ul></div>
+        <div class="skill-group reveal"><h3><i></i>Languages</h3><ul><li>Python (advanced)</li><li>C++ (advanced)</li><li>C</li><li>Go</li><li>SQL</li><li>Haskell</li></ul></div>
+        <div class="skill-group reveal"><h3><i></i>Systems &amp; tools</h3><ul><li>LiveKit, WebRTC</li><li>Claude API, Ollama</li><li>Git, Linux</li><li>SLURM GPU clusters</li><li>PySpark</li><li>Flask</li></ul></div>
+        <div class="skill-group reveal"><h3><i></i>Data &amp; design</h3><ul><li>Pandas, NumPy</li><li>NetworkX</li><li>Statistical testing</li><li>Unity, ARCore</li><li>Blender</li><li>Figma</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Achievements ===== -->
+  <section id="achievements" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Achievements</span>
+        <h2 class="section-title reveal">Problem solving and awards</h2>
+      </div>
+      <div class="achieve-grid">
+        <div class="achieve big reveal" data-animate>
+          <div class="achieve-k">HackerRank · Project Euler+</div>
+          <div class="huge">#<span data-count="2932">0</span></div>
+          <h3>Global rank out of 251,755 people</h3>
+          <p>Number theory, combinatorics and algorithm problems that have to run within strict time and memory limits.</p>
+          <div class="mini-stats">
+            <div><b>Top 1.2%</b><span>worldwide</span></div>
+            <div><b>67 / 73</b><span>solved perfectly</span></div>
+          </div>
+          <div class="rank-bar">
+            <div class="rank-track"><div class="rank-fill"></div></div>
+            <div class="rank-labels"><span>251,755</span><span>#1</span></div>
+          </div>
+        </div>
+        <div class="achieve reveal">
+          <div class="achieve-k">1st place</div>
+          <h3>Bro Code, campus coding contest</h3>
+          <p>Won the Computer Science Club's head-to-head programming contest at FLAME with a teammate.</p>
+        </div>
+        <div class="achieve reveal">
+          <div class="achieve-k">Awarded twice</div>
+          <h3>Trailblazer Award, FLAME University</h3>
+          <p>2022–23 and 2023–24, for doing well across academics, sport and culture.</p>
+        </div>
+        <div class="achieve reveal">
+          <div class="achieve-k">National hackathon</div>
+          <h3>UTU Online Hackathon</h3>
+          <p>Reached round 3 of 4 with a Python IoT app that waters plants when nobody is home. <a href="https://drive.google.com/file/d/1yzjLxo0QllkOw5sIkecfV-0D4idjPGV7/view" target="_blank" rel="noopener" style="color:var(--accent-2)">Certificate</a></p>
+        </div>
+        <div class="achieve reveal">
+          <div class="achieve-k">Distinction</div>
+          <h3>MSc Computer Science, Warwick</h3>
+          <p>Graduated with a Distinction in 2026.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Education</span>
+        <h2 class="section-title reveal">Where I studied</h2>
+      </div>
+      <div class="edu-grid" data-stagger>
+        <div class="edu reveal">
+          <span class="edu-badge">Distinction</span>
+          <div class="edu-date">Sept 2025 – Sept 2026 · Coventry, UK</div>
+          <h3>University of Warwick</h3>
+          <div class="edu-deg">MSc Computer Science</div>
+          <p>Dissertation on grounding LLMs with knowledge graphs (PersonaGraph).</p>
+          <div class="tags"><span class="tag">Machine Learning &amp; AI</span><span class="tag">NLP</span><span class="tag">Agent-Based Systems</span><span class="tag">High Performance Computing</span><span class="tag">Data Analytics</span><span class="tag">Image &amp; Video Analysis</span></div>
+        </div>
+        <div class="edu reveal">
+          <div class="edu-date">Aug 2021 – May 2024 · Pune, India</div>
+          <h3>FLAME University</h3>
+          <div class="edu-deg">BSc (Hons.) Computer Science</div>
+          <p>Trailblazer Award in 2022–23 and 2023–24.</p>
+          <div class="tags"><span class="tag">Algorithms</span><span class="tag">Data Structures</span><span class="tag">Distributed Systems</span><span class="tag">Operating Systems</span><span class="tag">Database Systems</span><span class="tag">Software Engineering</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Leadership ===== -->
+  <section id="leadership" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Outside work</span>
+        <h2 class="section-title reveal">Leadership and volunteering</h2>
+      </div>
+      <div class="lead-grid" data-stagger>
+        <div class="lead reveal"><div class="lead-icon" aria-hidden="true">🤝</div><div><h3>Technical Head</h3><div class="lead-org">Caritas Kolkata · student-led NGO</div><p>The group delivered food and supplies in Kolkata during COVID-19. I built its website from scratch in HTML, CSS and JavaScript and led a team of 5.</p></div></div>
+        <div class="lead reveal"><div class="lead-icon" aria-hidden="true">📝</div><div><h3>Technical Supervisor</h3><div class="lead-org">Verity Today · student publishing platform</div><p>Rebuilt the website of a platform that publishes stories and blogs by young writers.</p></div></div>
+        <div class="lead reveal"><div class="lead-icon" aria-hidden="true">🎨</div><div><h3>Co-founder &amp; Technical Supervisor</h3><div class="lead-org">Dezyne Art · student art platform</div><p>Co-founded a platform that gives young digital and fine artists a place to show their work, and ran its technical side.</p></div></div>
+        <div class="lead reveal"><div class="lead-icon" aria-hidden="true">🐾</div><div><h3>On-field Volunteer, 150 hours</h3><div class="lead-org"><a href="https://animalpeoplealliancekolkata.org" target="_blank" rel="noopener">Animal People Alliance Kolkata</a></div><p>Field work caring for neglected street animals in Kolkata.</p></div></div>
+      </div>
+      <div class="hobbies reveal">
+        <span class="chip hot">🕺 Hip hop · President, Dance Club</span><span class="chip">🏀 Basketball</span><span class="chip">🏸 Badminton</span><span class="chip">🛼 Skating</span><span class="chip">🏊 Swimming</span><span class="chip">♟️ Chess</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <span class="eyebrow reveal">Contact</span>
+      <h2 class="contact-title reveal">Let's <span class="grad">talk.</span></h2>
+      <p class="contact-sub reveal">I'm looking for AI, ML and GenAI engineering roles in India and can start right away. Email is the quickest way to reach me.</p>
+      <div class="contact-actions reveal">
+        <a href="mailto:kushal.mundra2607@gmail.com" class="btn btn-primary" data-magnetic><svg><use href="#i-mail"/></svg> kushal.mundra2607@gmail.com</a>
+        <button class="btn btn-ghost copy-btn" data-email="kushal.mundra2607@gmail.com" data-magnetic><svg><use href="#i-copy"/></svg> <span>Copy email</span></button>
+        <a href="tel:+918777695129" class="btn btn-ghost" data-magnetic><svg><use href="#i-phone"/></svg> +91 87776 95129</a>
+      </div>
+      <div class="socials reveal">
+        <a class="social" href="https://www.linkedin.com/in/kushal-mundra-425345220/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+        <a class="social" href="https://github.com/kushalMundra26" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+        <a class="social" href="http://www.instagram.com/kushal_mundra26" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
+      </div>
+
+      <form id="message-form" class="message-form reveal" data-to="kushal.mundra2607@gmail.com">
+        <div class="row">
+          <label>Name<input name="name" type="text" required autocomplete="name" /></label>
+          <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+        </div>
+        <label>Subject<input name="subject" type="text" placeholder="AI Engineer role at ..." /></label>
+        <label>Message<textarea name="message" required></textarea></label>
+        <button type="submit" class="btn btn-primary">Open in my email app <svg><use href="#i-arrow"/></svg></button>
+        <span class="form-note">This opens your email app with the message filled in. Nothing is stored on this site.</span>
+      </form>
+    </div>
+  </section>
+</main>
 
 <footer>
-  <p>Designed & Built by <a href="index.html">Kushal Mundra</a> &nbsp;·&nbsp; Warwick, UK &nbsp;·&nbsp; 2025</p>
+  <div class="container">
+    <span>© <span id="year">2026</span> Kushal Mundra</span>
+    <span>Designed and built by me. Plain HTML, CSS and JavaScript.</span>
+  </div>
 </footer>
 
 <script src="js/main.js"></script>
