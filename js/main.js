@@ -357,13 +357,170 @@ function initContact() {
   });
 }
 
+// ===== Smooth scrolling (Lenis) =====
+let lenis = null;
+function initSmoothScroll() {
+  if (reduceMotion || !finePointer || typeof window.Lenis !== 'function') return;
+  lenis = new window.Lenis({ duration: 1.15, easing: t => 1 - Math.pow(1 - t, 4), smoothWheel: true });
+  const raf = time => { lenis.raf(time); requestAnimationFrame(raf); };
+  requestAnimationFrame(raf);
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    const target = id === '#top' ? 0 : document.querySelector(id);
+    if (target === null) return;
+    e.preventDefault();
+    lenis.scrollTo(target, { offset: -84 });
+    history.replaceState(null, '', id);
+  }));
+}
+
+// ===== Custom cursor: dot + trailing ring =====
+function initCursor() {
+  const dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
+  if (!dot || !finePointer || reduceMotion) { dot && dot.remove(); ring && ring.remove(); return; }
+  let x = -100, y = -100, rx = x, ry = y;
+  window.addEventListener('pointermove', e => {
+    x = e.clientX; y = e.clientY;
+    document.body.classList.add('cursor-on');
+  }, { passive: true });
+  document.addEventListener('pointerleave', () => document.body.classList.remove('cursor-on'));
+  window.addEventListener('pointerdown', () => ring.classList.add('down'));
+  window.addEventListener('pointerup', () => ring.classList.remove('down'));
+  document.querySelectorAll('a, button, .card, .filter, input, textarea').forEach(el => {
+    el.addEventListener('pointerenter', () => ring.classList.add('hover'));
+    el.addEventListener('pointerleave', () => ring.classList.remove('hover'));
+  });
+  const loop = () => {
+    rx += (x - rx) * 0.18; ry += (y - ry) * 0.18;
+    dot.style.transform = `translate(${x}px, ${y}px)`;
+    ring.style.transform = `translate(${rx}px, ${ry}px)`;
+    requestAnimationFrame(loop);
+  };
+  loop();
+}
+
+// ===== Split headings into words that rise in on reveal =====
+function initSplitHeadings() {
+  if (reduceMotion) return;
+  document.querySelectorAll('.section-title, .contact-title').forEach(el => {
+    let i = 0;
+    const walk = (node, gradParent) => {
+      [...node.childNodes].forEach(child => {
+        if (child.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const wi = document.createElement('span'); wi.className = 'wi' + (gradParent ? ' grad' : '');
+            wi.style.setProperty('--i', i++); wi.textContent = part;
+            w.appendChild(wi); frag.appendChild(w);
+          });
+          child.replaceWith(frag);
+        } else if (child.nodeType === 1) {
+          const isGrad = child.classList.contains('grad');
+          if (isGrad) child.classList.remove('grad');
+          walk(child, gradParent || isGrad);
+        }
+      });
+    };
+    walk(el, false);
+    el.classList.remove('reveal');
+    el.classList.add('split');
+    el.setAttribute('data-animate', '');
+  });
+}
+
+// ===== Scroll-driven effects: hero parallax, statement scrub, feature cards, marquee skew =====
+function initScrollScenes() {
+  if (reduceMotion) {
+    document.querySelectorAll('.statement .sw').forEach(w => w.style.opacity = 1);
+    return;
+  }
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+
+  // Statement: wrap words so they light up as you scroll past
+  const statement = document.querySelector('[data-scrub]');
+  let words = [];
+  if (statement) {
+    const highlight = new Set(['Kira', 'PersonaGraph', '9.5%', '71%']);
+    statement.innerHTML = statement.textContent.trim().split(/\s+/)
+      .map(w => `<span class="sw${highlight.has(w.replace(/[.,]$/, '')) ? ' hl' : ''}">${w}</span>`).join(' ');
+    words = [...statement.querySelectorAll('.sw')];
+  }
+
+  const heroInner = document.querySelector('.hero .container');
+  const heroCanvas = document.getElementById('graph');
+  const hero = document.querySelector('.hero');
+  const features = [...document.querySelectorAll('.feature')];
+  features.forEach(f => { f.classList.remove('reveal'); f.classList.add('scrub'); });
+  const marquees = [...document.querySelectorAll('.marquee')];
+  const contactTitle = document.querySelector('.contact-title');
+
+  let lastY = window.scrollY, skew = 0;
+
+  const frame = () => {
+    const vh = window.innerHeight, y = window.scrollY;
+
+    // Hero: content drifts up and fades, network zooms in
+    if (hero) {
+      const p = clamp(y / hero.offsetHeight);
+      heroInner.style.transform = `translateY(${p * -120}px) scale(${1 - p * 0.06})`;
+      heroInner.style.opacity = 1 - p * 1.3;
+      heroCanvas.style.transform = `scale(${1 + p * 0.35})`;
+      heroCanvas.style.opacity = 1 - p * 0.9;
+    }
+
+    // Statement words
+    if (words.length) {
+      const r = statement.getBoundingClientRect();
+      const p = clamp((vh * 0.82 - r.top) / (r.height + vh * 0.35));
+      const lit = p * words.length;
+      words.forEach((w, i) => { w.style.opacity = 0.14 + 0.86 * clamp(lit - i); });
+    }
+
+    // Featured projects: scale up as they enter, visuals parallax inside
+    features.forEach(f => {
+      const r = f.getBoundingClientRect();
+      const enter = clamp((vh - r.top) / (vh * 0.6));
+      f.style.transform = `scale(${0.9 + 0.1 * enter}) translateY(${(1 - enter) * 60}px)`;
+      f.style.opacity = 0.25 + 0.75 * enter;
+      if (enter > 0.5) f.classList.add('in');
+      const inner = f.querySelector('.feature-visual > .pipeline, .feature-visual > #kg');
+      if (inner) {
+        const p = clamp((vh - r.top) / (vh + r.height));
+        inner.style.transform = `translateY(${(p - 0.5) * -50}px)`;
+      }
+    });
+
+    // Skills marquee leans with scroll speed
+    const v = y - lastY; lastY = y;
+    skew += (clamp(v * 0.35, -9, 9) - skew) * 0.12;
+    marquees.forEach((m, i) => { m.style.transform = `skewX(${(i ? -skew : skew).toFixed(2)}deg)`; });
+
+    // Contact title grows into place
+    if (contactTitle) {
+      const r = contactTitle.getBoundingClientRect();
+      const p = clamp((vh - r.top) / (vh * 0.7));
+      contactTitle.style.transform = `scale(${0.82 + 0.18 * p})`;
+    }
+
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initSmoothScroll();
   initNav();
   initScrollEffects();
+  initSplitHeadings();
+  initScrollScenes();
   initReveal();
   initCounters();
   initTyping();
   initCursorGlow();
+  initCursor();
   initMagnetic();
   initCards();
   initFilters();

@@ -46,6 +46,8 @@
 
 <div class="progress" aria-hidden="true"></div>
 <div class="cursor-glow" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
 
 <!-- ===== Nav ===== -->
 <nav class="nav" aria-label="Main">
@@ -101,6 +103,13 @@
   </section>
 
   <!-- ===== About ===== -->
+  <!-- ===== Statement (scroll-scrubbed) ===== -->
+  <section class="statement-wrap" aria-label="Summary">
+    <div class="container">
+      <p class="statement" data-scrub>I build AI agents, retrieval systems and voice interfaces, and then I check whether they actually work. Kira answered questions in live meetings. PersonaGraph took open LLMs from 9.5% to 71% consistency.</p>
+    </div>
+  </section>
+
   <section id="about" class="section">
     <div class="container about-grid">
       <div class="portrait-wrap reveal">
@@ -581,10 +590,11 @@
 <footer>
   <div class="container">
     <span>© <span id="year">2026</span> Kushal Mundra</span>
-    <span>Designed and built by me. Plain HTML, CSS and JavaScript.</span>
+    <a href="#top" class="to-top">Back to top ↑</a>
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
