@@ -3,18 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kushal Mundra | AI Engineer</title>
-  <meta name="description" content="Kushal Mundra, AI engineer. MSc Computer Science (Distinction), University of Warwick. Builds LLM agents, RAG systems and voice AI. Open to AI/ML roles in India." />
-  <meta name="theme-color" content="#07080d" />
-  <meta property="og:title" content="Kushal Mundra | AI Engineer" />
-  <meta property="og:description" content="LLM agents, RAG and voice AI. MSc Computer Science (Distinction), University of Warwick." />
+  <title>Kushal Mundra | AI/ML Engineer</title>
+  <meta name="description" content="Kushal Mundra, AI/ML engineer. MSc Computer Science (Distinction), University of Warwick. Builds LLM applications with RAG, knowledge graphs, tool-calling agents and speech AI." />
+  <meta name="theme-color" content="#050507" />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:title" content="Kushal Mundra | AI/ML Engineer" />
+  <meta property="og:description" content="LLMs, RAG, AI agents, NLP and speech. MSc Computer Science (Distinction), University of Warwick." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kushalmundra26.github.io/" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%2307080d'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='url(%23g)'%3EKM%3C/text%3E%3C/svg%3E" />
+  <meta property="og:image" content="https://kushalmundra26.github.io/assets/kushal.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23ffb547'/%3E%3Cstop offset='1' stop-color='%235ee6ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23050507'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='url(%23g)'%3EKM%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=13" />
+  <script>
+    document.documentElement.classList.add('js');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('reduced');
+  </script>
 </head>
 <body>
 
@@ -44,155 +51,226 @@
   <symbol id="i-gavel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 16.6 6.5 19.5l1-6.3L3 8.9 9 8z"/></symbol>
 </svg>
 
-<div class="progress" aria-hidden="true"></div>
-<div class="cursor-glow" aria-hidden="true"></div>
-<div class="cursor-dot" aria-hidden="true"></div>
-<div class="cursor-ring" aria-hidden="true"></div>
+<!-- ===== Loader ===== -->
+<div class="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-mark"><span>K</span><span>M</span></div>
+    <div class="loader-line"><i></i></div>
+    <div class="loader-row"><span>Assembling the graph</span><span class="loader-count">0</span></div>
+  </div>
+</div>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><i></i></div>
+<div class="cursor" aria-hidden="true"><div class="cursor-dot"></div><div class="cursor-ring"><span class="cursor-label"></span></div></div>
+
+<!-- Chapter HUD -->
+<div class="hud" aria-hidden="true">
+  <span class="hud-num">00</span>
+  <span class="hud-bar"><i></i></span>
+  <span class="hud-name">Intro</span>
+</div>
 
 <!-- ===== Nav ===== -->
 <nav class="nav" aria-label="Main">
-  <a href="#top" class="nav-logo">kushal<span>.</span>mundra</a>
+  <a href="#top" class="nav-logo" data-cursor="Top">kushal<em>.</em>mundra</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#now">Now</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="assets/Kushal_Mundra_CV.pdf" class="nav-cta" target="_blank" rel="noopener">Resume</a>
-  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+  <a href="assets/Kushal_Mundra_CV.pdf" class="nav-cta" target="_blank" rel="noopener" data-magnetic>Resume <svg><use href="#i-out"/></svg></a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
 </nav>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <ul>
+    <li><a href="#about"><small>01</small>About</a></li>
+    <li><a href="#now"><small>02</small>Now</a></li>
+    <li><a href="#work"><small>03</small>Work</a></li>
+    <li><a href="#experience"><small>04</small>Experience</a></li>
+    <li><a href="#research"><small>05</small>Research</a></li>
+    <li><a href="#skills"><small>06</small>Skills</a></li>
+    <li><a href="#achievements"><small>07</small>Achievements</a></li>
+    <li><a href="#contact"><small>08</small>Contact</a></li>
+  </ul>
+  <a href="assets/Kushal_Mundra_CV.pdf" class="btn btn-primary" target="_blank" rel="noopener">Download CV <svg><use href="#i-down"/></svg></a>
+</div>
 
 <main id="top">
 
   <!-- ===== Hero ===== -->
-  <header class="hero">
-    <canvas id="graph" aria-hidden="true"></canvas>
-    <div class="container">
-      <div class="hero-badge fade-up"><span class="pulse"></span>Open to AI / ML roles in India · can start now</div>
-      <h1 class="hero-title">
-        <span class="line"><span class="word">Kushal</span></span>
-        <span class="line"><span class="word grad">Mundra</span></span>
+  <header class="hero" data-chapter="Intro" data-scene="sphere" data-scene-x="3.5">
+    <div class="container hero-inner">
+      <div class="hero-badge"><span class="pulse"></span>Open to AI / ML roles · open to relocation · available to join immediately</div>
+      <h1 class="hero-title" aria-label="Kushal Mundra">
+        <span class="hero-line">Kushal</span>
+        <span class="hero-line"><span class="serif">Mundra</span></span>
       </h1>
-      <p class="hero-role fade-up d1"><span class="prompt">&gt;</span> <span class="typed" data-roles='["AI Engineer", "Machine Learning Engineer", "LLM & GenAI Developer", "Data Scientist"]'></span><span class="caret"></span></p>
-      <p class="hero-lead fade-up d2">I build AI that works outside the notebook. My voice agent <strong>Kira</strong> sat in live meetings and answered on Claude, and my MSc dissertation grounded open LLMs in a knowledge graph, taking their consistency from <strong>9.5% to 71%</strong>.</p>
-      <div class="hero-actions fade-up d3">
+      <p class="hero-role"><span class="mono-accent">&gt;</span> <span class="role-text" data-roles='["AI/ML Engineer", "Generative AI", "LLMs, RAG and AI agents", "NLP and speech"]'>AI/ML Engineer</span><span class="caret"></span></p>
+      <p class="hero-lead">I build AI that works outside the notebook. Right now I'm building a <strong>speech-to-text pipeline</strong> for customer calls in four languages. Before that, my voice agent <strong>Kira</strong> answered questions in live meetings on Claude, and my MSc dissertation took open LLMs from <strong>9.5% to 71%</strong> persona consistency.</p>
+      <div class="hero-actions">
         <a href="#work" class="btn btn-primary" data-magnetic>See my work <svg><use href="#i-arrow"/></svg></a>
         <a href="assets/Kushal_Mundra_CV.pdf" class="btn btn-ghost" target="_blank" rel="noopener" data-magnetic>Download CV <svg><use href="#i-down"/></svg></a>
       </div>
-      <div class="hero-meta fade-up d4">
+      <div class="hero-meta">
         <span><svg><use href="#i-pin"/></svg>Kolkata, India</span>
         <span><svg><use href="#i-cap"/></svg>MSc Computer Science, Warwick (Distinction)</span>
         <span><svg><use href="#i-doc"/></svg>3 peer-reviewed papers</span>
       </div>
     </div>
-    <div class="scroll-cue" aria-hidden="true"></div>
+    <div class="hero-hint" aria-hidden="true"><span>Move your cursor</span><span>Scroll</span><i></i></div>
   </header>
 
   <!-- ===== Stats ===== -->
-  <section class="stats" aria-label="Highlights">
+  <section class="stats" aria-label="Highlights" data-chapter="Intro" data-scene="sphere" data-scene-x="0" data-scene-dim="0.35" data-scene-start="top 92%">
     <div class="container">
-      <div class="stats-grid reveal">
-        <div class="stat"><div class="stat-num"><span data-count="71">0</span><span class="unit">%</span></div><div class="stat-label">LLM consistency with GraphRAG, up from 9.5%</div></div>
-        <div class="stat"><div class="stat-num">Top <span data-count="1.2">0</span><span class="unit">%</span></div><div class="stat-label">HackerRank Project Euler+, out of 251,755</div></div>
-        <div class="stat"><div class="stat-num"><span data-count="3">0</span></div><div class="stat-label">Papers at Springer AIED, ICDMAI and ICCE</div></div>
-        <div class="stat"><div class="stat-num"><span data-count="16">0</span></div><div class="stat-label">Projects across AI, software and design</div></div>
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-num"><span data-count="71">0</span><span class="unit">%</span></div><div class="stat-label">LLM persona consistency with GraphRAG, up from 9.5%</div></div>
+        <div class="stat"><div class="stat-num"><span class="pre">Top </span><span data-count="1.2" data-dec="1">0</span><span class="unit">%</span></div><div class="stat-label">HackerRank Project Euler+, out of 251,755</div></div>
+        <div class="stat"><div class="stat-num"><span data-count="94.2" data-dec="1">0</span><span class="unit">%</span></div><div class="stat-label">Python programming score, TCS iON NQT-IT</div></div>
+        <div class="stat"><div class="stat-num"><span data-count="3">0</span></div><div class="stat-label">Peer-reviewed papers at AIED, ICDMAI and ICCE</div></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== Statement ===== -->
+  <section class="statement-wrap" aria-label="Summary" data-chapter="Intro" data-scene="sphere" data-scene-x="0" data-scene-dim="0.3">
+    <div class="container">
+      <p class="statement">I build AI agents, retrieval systems and speech pipelines, and then I check whether they actually work. Kira answered questions in live meetings. PersonaGraph took open LLMs from 9.5% to 71% consistency.</p>
     </div>
   </section>
 
   <!-- ===== About ===== -->
-  <!-- ===== Statement (scroll-scrubbed) ===== -->
-  <section class="statement-wrap" aria-label="Summary">
-    <div class="container">
-      <p class="statement" data-scrub>I build AI agents, retrieval systems and voice interfaces, and then I check whether they actually work. Kira answered questions in live meetings. PersonaGraph took open LLMs from 9.5% to 71% consistency.</p>
-    </div>
-  </section>
-
-  <section id="about" class="section">
+  <section id="about" class="section" data-chapter="About" data-num="01" data-scene="field" data-scene-dim="0.6">
     <div class="container about-grid">
-      <div class="portrait-wrap reveal">
-        <div class="portrait-ring" aria-hidden="true"></div>
+      <div class="portrait-wrap">
         <div class="portrait">
           <img src="assets/kushal.jpg" alt="Kushal Mundra smiling in front of a wall of purple bougainvillea" loading="lazy" width="720" height="1280" />
         </div>
+        <div class="portrait-tag"><span class="pulse"></span>Kolkata, India</div>
+        <div class="portrait-corner tl"></div><div class="portrait-corner br"></div>
       </div>
       <div class="about-text">
-        <span class="eyebrow reveal">About me</span>
-        <h2 class="section-title reveal">I like AI that holds up when real people use it.</h2>
-        <p class="reveal">I'm an AI engineer from Kolkata. I finished my <strong>MSc in Computer Science at the University of Warwick with a Distinction</strong> in 2026, after a BSc (Hons.) in Computer Science at FLAME University.</p>
-        <p class="reveal">Most of my work sits where language models meet real systems. At FLAME's AI Center I built and deployed <strong>Kira</strong>, a voice assistant that listens in live meetings and speaks only when called. At <strong>IIT Bombay</strong> I helped study how students use AI coding assistants in programming contests, which became a Springer paper.</p>
-        <p class="reveal">I also care a lot about measuring whether a model is actually right. In my dissertation the first metric I used overstated quality by about 20 points. Catching that changed how I reported every result after it.</p>
-        <div class="about-facts" data-stagger>
-          <div class="fact reveal"><div class="fact-k">Based in</div><div class="fact-v">Kolkata, India</div></div>
-          <div class="fact reveal"><div class="fact-k">Focus</div><div class="fact-v">LLMs, RAG, agents, NLP</div></div>
-          <div class="fact reveal"><div class="fact-k">Languages</div><div class="fact-v">Python, C++, C, Go, SQL</div></div>
-          <div class="fact reveal"><div class="fact-k">Available</div><div class="fact-v">Immediately</div></div>
+        <span class="eyebrow"><b>01</b> About me</span>
+        <h2 class="section-title split">I like AI that holds up when <span class="serif">real people</span> use it.</h2>
+        <p class="rise">I'm an AI/ML engineer from Kolkata. I finished my <strong>MSc in Computer Science at the University of Warwick with a Distinction</strong> in 2026, after a BSc (Hons) in Computer Science at FLAME University.</p>
+        <p class="rise">Most of my work sits where language models meet real systems. At FLAME's AI Center I built and deployed <strong>Kira</strong>, a voice assistant that listens in live meetings and speaks only when called. At <strong>IIT Bombay</strong> I helped study how students use AI coding assistants in programming contests, which became a Springer paper. Today, at <strong>SB Infowaves</strong>, I'm building speech-to-text for real customer calls.</p>
+        <p class="rise">I also care a lot about measuring whether a model is actually right. In my dissertation the first metric I used overstated quality by about 20 points. Catching that changed how I reported every result after it.</p>
+        <div class="about-facts">
+          <div class="fact"><div class="fact-k">Based in</div><div class="fact-v">Kolkata, open to relocation</div></div>
+          <div class="fact"><div class="fact-k">Focus</div><div class="fact-v">LLMs, RAG, agents, NLP, speech</div></div>
+          <div class="fact"><div class="fact-k">Languages</div><div class="fact-v">Python, C++, SQL, JavaScript, C, Go</div></div>
+          <div class="fact"><div class="fact-k">Available</div><div class="fact-v">Immediately</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Work ===== -->
-  <section id="work" class="section">
+  <!-- ===== Now ===== -->
+  <section id="now" class="section now" data-chapter="Now" data-num="02" data-scene="wave" data-scene-dim="0.85">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow reveal">Selected work</span>
-        <h2 class="section-title reveal">Things I've built</h2>
-        <p class="section-sub reveal">Two projects I'd most like to talk about in an interview, then everything else.</p>
+        <span class="eyebrow"><b>02</b> Right now</span>
+        <h2 class="section-title split">Turning <span class="serif">four languages</span> of customer calls into text.</h2>
       </div>
+      <div class="now-card">
+        <div class="now-info">
+          <div class="now-role">
+            <span class="live"><span class="pulse"></span>Current role</span>
+            <h3>AI Intern, SB Infowaves</h3>
+            <div class="now-meta">Kolkata, India · Nov 2026 → Present</div>
+          </div>
+          <ul class="now-list">
+            <li>Building a speech-to-text pipeline that transcribes customer calls from the company's cloud telephony system in <strong>Bengali, Assamese, Hindi and English</strong>, using ffmpeg, VAD, language identification, IndicConformer and Whisper.</li>
+            <li>Debugging failures on real calls (overlapping speech, code-switching, noisy audio) and reporting to the Head of AI.</li>
+          </ul>
+          <div class="tags"><span class="tag">ffmpeg</span><span class="tag">VAD</span><span class="tag">Language ID</span><span class="tag">IndicConformer</span><span class="tag">Whisper</span></div>
+        </div>
+        <div class="now-visual" aria-hidden="true">
+          <div class="lanes">
+            <canvas class="lanes-canvas"></canvas>
+            <div class="lane-labels"><span>Bengali</span><span>Assamese</span><span>Hindi</span><span>English</span></div>
+          </div>
+          <div class="pipe">
+            <span class="pipe-step">Call audio</span><span class="pipe-step">ffmpeg</span><span class="pipe-step">VAD</span><span class="pipe-step">Language ID</span><span class="pipe-step">IndicConformer · Whisper</span><span class="pipe-step">Transcript</span>
+          </div>
+          <div class="hard"><span>What breaks on real calls</span><b>Overlapping speech</b><b>Code-switching</b><b>Noisy audio</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="featured">
+  <!-- ===== Featured work (horizontal) ===== -->
+  <section id="work" class="work" data-chapter="Work" data-num="03">
+    <div class="work-pin">
+      <div class="work-track">
+        <div class="panel panel-intro" data-scene="ring" data-scene-x="2.2" data-scene-dim="0.7">
+          <span class="eyebrow"><b>03</b> Selected work</span>
+          <h2 class="work-title split">Things <span class="serif">I've built</span></h2>
+          <p class="section-sub">Two projects I'd most like to talk about in an interview, then everything else.</p>
+          <div class="work-hint"><span>Keep scrolling</span><svg><use href="#i-arrow"/></svg></div>
+        </div>
+
         <!-- Kira -->
-        <article class="feature reveal" data-animate>
+        <article class="panel feature feature-kira" data-scene="ring" data-scene-x="-4.4" data-scene-dim="0.6">
           <div class="feature-visual" aria-hidden="true">
-            <div class="pipeline">
-              <div class="wave"></div>
+            <div class="kira">
+              <canvas class="kira-orb"></canvas>
+              <div class="kira-name">Kira</div>
               <div class="stages">
                 <div class="stage"><b>Listen</b>Deepgram STT</div>
                 <div class="stage"><b>Gate</b>wake word</div>
-                <div class="stage"><b>Think</b>Claude 3.5</div>
+                <div class="stage"><b>Think</b>Claude 3.5 Sonnet</div>
                 <div class="stage"><b>Speak</b>Resemble TTS</div>
               </div>
               <div class="chat">
                 <div class="bubble me">So we push the review to next week?</div>
                 <div class="bubble skip">no wake word · LLM not called</div>
                 <div class="bubble me">Kira, when is the next review?</div>
-                <div class="bubble">Thursday at 3 PM. It's on the calendar.</div>
+                <div class="bubble bot">Thursday at 3 PM. It's on the calendar.</div>
               </div>
             </div>
           </div>
           <div class="feature-body">
             <span class="feature-tag">Deployed · AI Center, FLAME University · 2025</span>
-            <h3 class="feature-title">Kira: a voice AI agent for live meetings</h3>
+            <h3 class="feature-title">Kira: a voice AI agent for <span class="serif">live meetings</span></h3>
             <p class="feature-desc">Kira joins a meeting room, listens to everyone, and answers out loud only when someone says its name. It can search the web and manage a calendar in the middle of a conversation.</p>
             <ul class="feature-list">
-              <li>Real-time pipeline over <strong>WebRTC (LiveKit)</strong>: Deepgram speech-to-text, <strong>Claude 3.5 Sonnet</strong>, Resemble text-to-speech.</li>
-              <li>Turn-taking with Silero VAD, and the running meeting transcript passed back in as context so answers stay on topic.</li>
-              <li>After launch it replied to every sentence. The wake-word check ran after the request had already reached the LLM, so I moved it in front of the call. That fixed it and cut a lot of wasted API calls.</li>
+              <li>Real-time pipeline over <strong>WebRTC (LiveKit)</strong>: Deepgram speech-to-text, <strong>Claude 3.5 Sonnet</strong>, Resemble text-to-speech and Silero VAD for turn-taking.</li>
+              <li>Typed tool functions for web search and calendar management, with error handling for failed API calls.</li>
+              <li>After launch it replied to every sentence. The wake-word check ran after the request had already reached the LLM, so I moved it in front of the call. That fixed it and cut wasted API calls.</li>
             </ul>
             <div class="feature-foot">
               <div class="tags"><span class="tag">Python</span><span class="tag">LiveKit</span><span class="tag">Claude API</span><span class="tag">Deepgram</span><span class="tag">Tool calling</span></div>
-              <a class="link-arrow" href="https://github.com/kushalMundra26/Kira_Teaching_Assistant_Final" target="_blank" rel="noopener">View code <svg><use href="#i-out"/></svg></a>
+              <a class="link-arrow" href="https://github.com/kushalMundra26/Kira_Teaching_Assistant_Final" target="_blank" rel="noopener" data-cursor="Code">View code <svg><use href="#i-out"/></svg></a>
             </div>
           </div>
         </article>
 
         <!-- PersonaGraph -->
-        <article class="feature reveal" data-animate>
+        <article class="panel feature feature-pg" data-scene="graph" data-scene-x="-3.2" data-scene-dim="0.5">
           <div class="feature-visual" aria-hidden="true">
-            <canvas id="kg"></canvas>
-            <div class="bar-compare">
-              <div>Persona consistency</div>
-              <div class="bar-row before"><div class="bar-head"><span>Without graph</span><b>9.5%</b></div><div class="bar"><i></i></div></div>
-              <div class="bar-row after"><div class="bar-head"><span>With GraphRAG</span><b>71%</b></div><div class="bar"><i></i></div></div>
+            <div class="pg">
+              <div class="pg-legend"><span>950 nodes</span><span>6 entity types</span><span>retrieved per persona</span></div>
+              <div class="bar-compare">
+                <div class="bar-title">Persona consistency</div>
+                <div class="bar-row before"><div class="bar-head"><span>Without graph</span><b><span data-bar-num="9.5">0</span>%</b></div><div class="bar"><i data-bar="9.5"></i></div></div>
+                <div class="bar-row after"><div class="bar-head"><span>With GraphRAG</span><b><span data-bar-num="71">0</span>%</b></div><div class="bar"><i data-bar="71"></i></div></div>
+                <div class="bar-note">Wilcoxon p &lt; 0.001, held for every model</div>
+              </div>
+              <div class="pg-finding"><b>~20 pts</b><span>how much the first metric overstated quality. Outputs were evaluated with BERTScore and NLI.</span></div>
             </div>
-            <div class="kg-legend"><span>950 nodes</span><span>6 entity types</span><span>retrieved per persona</span></div>
           </div>
           <div class="feature-body">
             <span class="feature-tag">MSc dissertation · University of Warwick · 2026</span>
-            <h3 class="feature-title">PersonaGraph: grounding LLMs in a knowledge graph</h3>
+            <h3 class="feature-title">PersonaGraph: grounding LLMs in a <span class="serif">knowledge graph</span></h3>
             <p class="feature-desc">Can a knowledge graph stop an LLM from contradicting the persona it's meant to play? I built the whole pipeline to find out, from raw government PDFs to the statistics at the end.</p>
             <div class="feature-metric">
               <div><div class="metric-v grad">9.5 → 71%</div><div class="metric-k">persona consistency</div></div>
@@ -200,55 +278,67 @@
               <div><div class="metric-v">5 × 100</div><div class="metric-k">models × test cases</div></div>
             </div>
             <ul class="feature-list">
-              <li>Pulled statistics out of 4 government PDF reports and generated 500 synthetic personas, checked against the source with chi-square tests (<strong>25 of 28 attributes matched</strong>).</li>
-              <li>Built a knowledge graph (950 nodes, 6 entity types) and a <strong>GraphRAG</strong> step that puts each persona's context into the prompt for Qwen 3.5, Gemma 4 and Mistral.</li>
-              <li>Ran the experiments on Warwick's GPU cluster. The gain held for every model (Wilcoxon p &lt; 0.001), and a plain-text baseline did about as well as the graph, so the real win was giving the model the right facts.</li>
+              <li>Pulled statistics out of 4 government reports and generated 500 synthetic personas, checked against the source with chi-square tests (<strong>25 of 28 attributes matched</strong>).</li>
+              <li>Built a knowledge graph (950 nodes, 6 entity types) and a <strong>GraphRAG</strong> step that puts each persona's facts into the prompt for 5 open LLMs, including Qwen, Gemma and Mistral, on a GPU cluster.</li>
             </ul>
             <div class="feature-foot">
               <div class="tags"><span class="tag">Python</span><span class="tag">NetworkX</span><span class="tag">Ollama</span><span class="tag">SLURM</span><span class="tag">BERTScore</span><span class="tag">NLI</span></div>
-              <a class="link-arrow" href="https://github.com/kushalMundra26/PersonaGraph_Diss" target="_blank" rel="noopener">View code <svg><use href="#i-out"/></svg></a>
+              <a class="link-arrow" href="https://github.com/kushalMundra26/PersonaGraph_Diss" target="_blank" rel="noopener" data-cursor="Code">View code <svg><use href="#i-out"/></svg></a>
             </div>
           </div>
         </article>
       </div>
+    </div>
+  </section>
 
-      <!-- More projects -->
-      <div class="filters reveal" role="group" aria-label="Filter projects">
-        <button class="filter active" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter" data-filter="ai" aria-pressed="false">AI &amp; ML</button>
-        <button class="filter" data-filter="software" aria-pressed="false">Software</button>
-        <button class="filter" data-filter="creative" aria-pressed="false">Games, AR &amp; design</button>
+  <!-- ===== All projects ===== -->
+  <section id="projects" class="section" data-chapter="Projects" data-num="03" data-scene="constellation" data-scene-dim="0.55">
+    <div class="container">
+      <div class="section-head row">
+        <div>
+          <span class="eyebrow"><b>03</b> Everything else</span>
+          <h2 class="section-title split">More <span class="serif">projects</span></h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button class="filter active" data-filter="all" aria-pressed="true">All <sup>14</sup></button>
+          <button class="filter" data-filter="ai" aria-pressed="false">AI &amp; ML</button>
+          <button class="filter" data-filter="software" aria-pressed="false">Software</button>
+          <button class="filter" data-filter="creative" aria-pressed="false">Games, AR &amp; design</button>
+        </div>
       </div>
 
-      <div class="grid" data-stagger>
-        <article class="card reveal has-link" data-cat="ai">
-          <a class="card-link" href="https://github.com/kushalMundra26/Tweet-Sentiment-Classification" target="_blank" rel="noopener" aria-label="Tweet sentiment code on GitHub"><svg><use href="#i-out"/></svg></a>
+      <div class="grid">
+        <article class="card" data-cat="ai">
+          <a class="card-link" href="https://github.com/kushalMundra26/Tweet-Sentiment-Classification" target="_blank" rel="noopener" aria-label="Tweet sentiment code on GitHub" data-cursor="Open"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-brain"/></svg></div><span class="card-year">2025</span></div>
           <h3>Tweet Sentiment Classification</h3>
           <div class="card-where">SemEval 2017 · Warwick</div>
-          <p>Compared 7 classifiers, from SVM and logistic regression to a BiLSTM with self-attention and a fine-tuned RoBERTa. RoBERTa reached a <strong>macro F1 of 0.8552</strong> across three test sets. The preprocessing handles emoticons, slang and negation.</p>
-          <div class="tags"><span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">RoBERTa</span><span class="tag">NLP</span></div>
+          <p>Compared 7 classifiers, from SVM and logistic regression to a BiLSTM with self-attention and a fine-tuned RoBERTa. RoBERTa reached a <strong>macro F1 of 0.855</strong> across three test sets.</p>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">RoBERTa</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
 
-        <article class="card reveal has-link" data-cat="ai">
-          <a class="card-link" href="https://github.com/kushalMundra26/Marginal-Gain-Auction-Bot" target="_blank" rel="noopener" aria-label="Auction bot code on GitHub"><svg><use href="#i-out"/></svg></a>
+        <article class="card" data-cat="ai">
+          <a class="card-link" href="https://github.com/kushalMundra26/Marginal-Gain-Auction-Bot" target="_blank" rel="noopener" aria-label="Auction bot code on GitHub" data-cursor="Open"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-gavel"/></svg></div><span class="card-year">2025</span></div>
           <h3>Marginal-Gain Auction Bot</h3>
           <div class="card-where">Multi-agent systems · Warwick</div>
           <p>A bidding agent for a multi-round auction game. Bids come from the partial derivatives of a Cobb-Douglas scoring function, with bid shading and detection of four opponent types. It won most rounds of a <strong>10-bot, 50-auction tournament</strong>, averaging over 13,500 points.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">Game theory</span><span class="tag">Agents</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
 
-        <article class="card reveal has-link" data-cat="ai">
-          <a class="card-link" href="https://doi.org/10.1007/978-981-97-3242-5_20" target="_blank" rel="noopener" aria-label="NSLNet paper on Springer"><svg><use href="#i-out"/></svg></a>
+        <article class="card" data-cat="ai">
+          <a class="card-link" href="https://doi.org/10.1007/978-981-97-3242-5_20" target="_blank" rel="noopener" aria-label="NSLNet paper on Springer" data-cursor="Paper"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-eye"/></svg></div><span class="card-year">2023</span></div>
           <h3>NSLNet: Steel Surface Defect Detection</h3>
           <div class="card-where">Published at Springer ICDMAI 2024</div>
           <p>Classified surface defects on the NEU steel dataset using GLCM texture features with Random Forest and neural networks, reaching <strong>89% accuracy</strong>. SHAP shows which features drove each prediction.</p>
           <div class="tags"><span class="tag">Scikit-learn</span><span class="tag">SHAP</span><span class="tag">Computer vision</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
 
-        <article class="card reveal" data-cat="ai">
+        <article class="card" data-cat="ai">
           <div class="card-top"><div class="card-icon"><svg><use href="#i-chart"/></svg></div><span class="card-year">2026</span></div>
           <h3>Protein Expression from Tissue Images</h3>
           <div class="card-where">Coursework · Warwick</div>
@@ -256,7 +346,7 @@
           <div class="tags"><span class="tag">PyTorch</span><span class="tag">ResNet-18</span><span class="tag">Regression</span></div>
         </article>
 
-        <article class="card reveal" data-cat="ai">
+        <article class="card" data-cat="ai">
           <div class="card-top"><div class="card-icon"><svg><use href="#i-eye"/></svg></div><span class="card-year">2026</span></div>
           <h3>Image Classification with Transfer Learning</h3>
           <div class="card-where">Coursework · Warwick</div>
@@ -264,7 +354,7 @@
           <div class="tags"><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">CNNs</span></div>
         </article>
 
-        <article class="card reveal" data-cat="software ai">
+        <article class="card" data-cat="software ai">
           <div class="card-top"><div class="card-icon"><svg><use href="#i-chart"/></svg></div><span class="card-year">2024</span></div>
           <h3>Airbnb NYC Analysis at Scale</h3>
           <div class="card-where">Big data</div>
@@ -272,34 +362,37 @@
           <div class="tags"><span class="tag">PySpark</span><span class="tag">ML models</span><span class="tag">Big data</span></div>
         </article>
 
-        <article class="card reveal has-link" data-cat="software">
-          <a class="card-link" href="https://github.com/kushalMundra26/Kuga-DBMS" target="_blank" rel="noopener" aria-label="Kuga DBMS code on GitHub"><svg><use href="#i-out"/></svg></a>
+        <article class="card" data-cat="software">
+          <a class="card-link" href="https://github.com/kushalMundra26/Kuga-DBMS" target="_blank" rel="noopener" aria-label="Kuga DBMS code on GitHub" data-cursor="Open"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-db"/></svg></div><span class="card-year">2024</span></div>
           <h3>Kuga DBMS</h3>
           <div class="card-where">Database systems</div>
           <p>A small database management system written from scratch in Python, with its own query syntax for creating tables, inserting, updating, deleting and searching records, plus CSV import and export.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">Databases</span><span class="tag">Parsing</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
 
-        <article class="card reveal has-link" data-cat="software">
-          <a class="card-link" href="https://github.com/kushalMundra26/SoftwareEngeeringProject" target="_blank" rel="noopener" aria-label="Club Comms code on GitHub"><svg><use href="#i-out"/></svg></a>
+        <article class="card" data-cat="software">
+          <a class="card-link" href="https://github.com/kushalMundra26/SoftwareEngeeringProject" target="_blank" rel="noopener" aria-label="Club Comms code on GitHub" data-cursor="Open"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-code"/></svg></div><span class="card-year">2023</span></div>
           <h3>Club Comms</h3>
           <div class="card-where">Software engineering · FLAME University</div>
           <p>An event platform for FLAME's student clubs, built with two teammates. Clubs can track events and collect feedback in one place.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
 
-        <article class="card reveal has-link" data-cat="creative software">
-          <a class="card-link" href="https://github.com/kushalMundra26/Teleporter-Maze-Game" target="_blank" rel="noopener" aria-label="Teleporter Maze code on GitHub"><svg><use href="#i-out"/></svg></a>
+        <article class="card" data-cat="creative software">
+          <a class="card-link" href="https://github.com/kushalMundra26/Teleporter-Maze-Game" target="_blank" rel="noopener" aria-label="Teleporter Maze code on GitHub" data-cursor="Open"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-game"/></svg></div><span class="card-year">2024</span></div>
           <h3>Teleporter Maze Game</h3>
           <div class="card-where">Pygame</div>
           <p>A maze game with two levels, teleporters that jump you across the map, a timer, and a star rating based on how fast you finish.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">Pygame</span><span class="tag">Game dev</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
 
-        <article class="card reveal" data-cat="creative">
+        <article class="card" data-cat="creative">
           <div class="card-top"><div class="card-icon"><svg><use href="#i-cube"/></svg></div><span class="card-year">2023</span></div>
           <h3>AR Classroom App</h3>
           <div class="card-where">IIT Bombay</div>
@@ -307,123 +400,150 @@
           <div class="tags"><span class="tag">Unity</span><span class="tag">ARCore</span><span class="tag">C#</span></div>
         </article>
 
-        <article class="card reveal has-link" data-cat="creative">
-          <a class="card-link" href="https://gd.games/instant-builds/5faca452-0e10-412f-b0e1-45702635c0c0" target="_blank" rel="noopener" aria-label="Play Detective Dave"><svg><use href="#i-out"/></svg></a>
+        <article class="card" data-cat="creative">
+          <a class="card-link" href="https://gd.games/instant-builds/5faca452-0e10-412f-b0e1-45702635c0c0" target="_blank" rel="noopener" aria-label="Play Detective Dave" data-cursor="Play"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-game"/></svg></div><span class="card-year">FLAME</span></div>
           <h3>Detective Dave</h3>
           <div class="card-where">Playable in the browser</div>
           <p>A 2D detective game that teaches Prolog. You crack each case by reasoning through clauses, so the logic is the gameplay.</p>
           <div class="tags"><span class="tag">GDevelop</span><span class="tag">Prolog</span><span class="tag">Game design</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
 
-        <article class="card reveal has-link" data-cat="creative">
-          <a class="card-link" href="https://www.figma.com/proto/iFibzePcIdSs7twHeVUrTu/BookBazaar-New-UI?page-id=158%3A3&amp;type=design&amp;node-id=214-30392&amp;viewport=355%2C291%2C0.1&amp;t=i73vy8MpxexXTqaP-1&amp;scaling=scale-down&amp;starting-point-node-id=192%3A25658" target="_blank" rel="noopener" aria-label="BookBazaar Figma prototype"><svg><use href="#i-out"/></svg></a>
+        <article class="card" data-cat="creative">
+          <a class="card-link" href="https://www.figma.com/proto/iFibzePcIdSs7twHeVUrTu/BookBazaar-New-UI?page-id=158%3A3&amp;type=design&amp;node-id=214-30392&amp;viewport=355%2C291%2C0.1&amp;t=i73vy8MpxexXTqaP-1&amp;scaling=scale-down&amp;starting-point-node-id=192%3A25658" target="_blank" rel="noopener" aria-label="BookBazaar Figma prototype" data-cursor="View"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-pen"/></svg></div><span class="card-year">FLAME</span></div>
           <h3>BookBazaar</h3>
           <div class="card-where">UI/UX design</div>
           <p>Designed the full interface of a campus book-exchange app in Figma with two teammates.</p>
           <div class="tags"><span class="tag">Figma</span><span class="tag">Prototyping</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
 
-        <article class="card reveal has-link" data-cat="creative">
-          <a class="card-link" href="https://drive.google.com/file/d/1AUDUrSqdNc3H0nK4-dHqDyJSHQX0J9_g/view" target="_blank" rel="noopener" aria-label="Watch the Pixar lamp animation"><svg><use href="#i-out"/></svg></a>
+        <article class="card" data-cat="creative">
+          <a class="card-link" href="https://drive.google.com/file/d/1AUDUrSqdNc3H0nK4-dHqDyJSHQX0J9_g/view" target="_blank" rel="noopener" aria-label="Watch the Pixar lamp animation" data-cursor="Watch"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-film"/></svg></div><span class="card-year">Blender</span></div>
           <h3>Pixar Lamp Animation</h3>
           <div class="card-where">3D animation</div>
           <p>Modelled, rigged and animated the Pixar lamp in Blender.</p>
           <div class="tags"><span class="tag">Blender</span><span class="tag">Rigging</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
 
-        <article class="card reveal has-link" data-cat="creative">
-          <a class="card-link" href="https://dip.flame.edu.in/youtube-video/a-brew-of-coffee-and-culture-kodagu-karnataka/" target="_blank" rel="noopener" aria-label="Watch the documentary"><svg><use href="#i-out"/></svg></a>
+        <article class="card" data-cat="creative">
+          <a class="card-link" href="https://dip.flame.edu.in/youtube-video/a-brew-of-coffee-and-culture-kodagu-karnataka/" target="_blank" rel="noopener" aria-label="Watch the documentary" data-cursor="Watch"></a>
           <div class="card-top"><div class="card-icon"><svg><use href="#i-film"/></svg></div><span class="card-year">FLAME</span></div>
           <h3>A Brew of Coffee and Culture</h3>
           <div class="card-where">Field research · Documentary</div>
           <p>Field research and a short documentary on the Kodava community of Kodagu, Karnataka, and how coffee shapes their rituals and livelihoods.</p>
           <div class="tags"><span class="tag">Field research</span><span class="tag">Film</span></div>
+          <span class="card-go"><svg><use href="#i-out"/></svg></span>
         </article>
       </div>
     </div>
   </section>
 
   <!-- ===== Experience ===== -->
-  <section id="experience" class="section">
+  <section id="experience" class="section" data-chapter="Experience" data-num="04" data-scene="helix" data-scene-x="3.2" data-scene-dim="0.55">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow reveal">Experience</span>
-        <h2 class="section-title reveal">Where I've worked</h2>
+        <span class="eyebrow"><b>04</b> Experience</span>
+        <h2 class="section-title split">Where I've <span class="serif">worked</span></h2>
       </div>
       <div class="timeline">
         <div class="timeline-line" aria-hidden="true"><i></i></div>
 
-        <div class="job">
+        <div class="job current">
           <span class="job-dot" aria-hidden="true"></span>
-          <div class="job-head"><h3 class="job-role">Software Engineering Intern</h3><span class="job-date">Apr 2025 – Jul 2025</span></div>
-          <div class="job-org">AI Center, FLAME University <span>· Pune</span></div>
-          <ul>
-            <li>Built and deployed <strong>Kira</strong>, a voice AI agent for live meetings, on LiveKit with Deepgram, <strong>Claude 3.5 Sonnet</strong> and Resemble.</li>
-            <li>Wrote tool functions with typed inputs and error handling for web search and calendar management, which the LLM calls mid-conversation.</li>
-            <li>Tracked down why the agent replied to every utterance and moved the wake-word gate ahead of the LLM call, which fixed it and cut API cost.</li>
-          </ul>
-          <div class="tags"><span class="tag">Python</span><span class="tag">LiveKit</span><span class="tag">Claude API</span><span class="tag">Async pipelines</span></div>
+          <div class="job-date">Nov 2026 → Present</div>
+          <div class="job-card">
+            <div class="job-head"><h3 class="job-role">AI Intern</h3><span class="live small"><span class="pulse"></span>Now</span></div>
+            <div class="job-org">SB Infowaves <span>· Kolkata</span></div>
+            <ul>
+              <li>Building a speech-to-text pipeline that transcribes customer calls from the company's cloud telephony system in Bengali, Assamese, Hindi and English, using ffmpeg, VAD, language identification, IndicConformer and Whisper.</li>
+              <li>Debugging failures on real calls (overlapping speech, code-switching, noisy audio) and reporting to the Head of AI.</li>
+            </ul>
+            <div class="tags"><span class="tag">Speech-to-text</span><span class="tag">Whisper</span><span class="tag">IndicConformer</span><span class="tag">VAD</span><span class="tag">ffmpeg</span></div>
+          </div>
         </div>
 
         <div class="job">
           <span class="job-dot" aria-hidden="true"></span>
-          <div class="job-head"><h3 class="job-role">Project Technical Assistant</h3><span class="job-date">Sept 2024 – Feb 2025</span></div>
-          <div class="job-org">Indian Institute of Technology Bombay <span>· Mumbai</span></div>
-          <ul>
-            <li>Evaluated 6 AI coding assistants and benchmarked the top two, <strong>Amazon Q and Tabnine</strong>, across 9 live contests on LeetCode, CodeChef and Codeforces.</li>
-            <li>Designed a rubric for judging AI-generated code and ran a user study with <strong>18 participants</strong>.</li>
-            <li>Co-authored the resulting paper, published at <strong>AIED 2025 (Springer)</strong>.</li>
-          </ul>
-          <div class="tags"><span class="tag">AI evaluation</span><span class="tag">User studies</span><span class="tag">Research</span></div>
+          <div class="job-date">Apr 2025 → Jul 2025</div>
+          <div class="job-card">
+            <div class="job-head"><h3 class="job-role">Software Engineering Intern (AI)</h3></div>
+            <div class="job-org">AI Center, FLAME University <span>· Pune</span></div>
+            <ul>
+              <li>Built and deployed <strong>Kira</strong>, a real-time voice AI agent in Python that joins live meetings over LiveKit WebRTC, using Deepgram for speech-to-text, <strong>Claude 3.5 Sonnet</strong> as the LLM, Resemble for text-to-speech and Silero VAD for turn-taking.</li>
+              <li>Wrote typed tool functions (function calling) for web search and calendar management, with error handling for failed API calls.</li>
+              <li>Fixed a bug found in user testing (the agent replied to every sentence) by moving the wake-word check before the LLM call, cutting wasted API calls.</li>
+            </ul>
+            <div class="tags"><span class="tag">Python</span><span class="tag">LiveKit</span><span class="tag">Claude API</span><span class="tag">Deepgram</span></div>
+          </div>
         </div>
 
         <div class="job">
           <span class="job-dot" aria-hidden="true"></span>
-          <div class="job-head"><h3 class="job-role">AR Developer Intern</h3><span class="job-date">May 2023 – Aug 2023</span></div>
-          <div class="job-org">Indian Institute of Technology Bombay <span>· Remote</span></div>
-          <ul>
-            <li>Built an AR classroom app in Unity and ARCore with 3D object tracking and interactive controls for teaching electromagnetism.</li>
-            <li>The app was used in live teaching sessions.</li>
-          </ul>
-          <div class="tags"><span class="tag">Unity</span><span class="tag">ARCore</span><span class="tag">C#</span></div>
+          <div class="job-date">Sep 2024 → Feb 2025</div>
+          <div class="job-card">
+            <div class="job-head"><h3 class="job-role">Project Technical Assistant</h3></div>
+            <div class="job-org">Indian Institute of Technology Bombay <span>· Mumbai</span></div>
+            <ul>
+              <li>Evaluated 6 AI coding assistants and benchmarked <strong>Amazon Q and Tabnine</strong> across 9 live competitive programming contests (LeetCode, Codeforces, CodeChef).</li>
+              <li>Designed a rubric to score AI-generated code on correctness and quality and ran a user study with <strong>18 participants</strong>.</li>
+              <li>Co-authored the findings at <strong>AIED 2025 (Springer)</strong>.</li>
+            </ul>
+            <div class="tags"><span class="tag">AI evaluation</span><span class="tag">User studies</span><span class="tag">Research</span></div>
+          </div>
+        </div>
+
+        <div class="job">
+          <span class="job-dot" aria-hidden="true"></span>
+          <div class="job-date">May 2023 → Aug 2023</div>
+          <div class="job-card">
+            <div class="job-head"><h3 class="job-role">AR Developer Intern</h3></div>
+            <div class="job-org">Indian Institute of Technology Bombay <span>· Remote</span></div>
+            <ul>
+              <li>Built an AR classroom app in Unity and ARCore with 3D object tracking and interactive controls for teaching electromagnetism.</li>
+              <li>The app was used in live teaching sessions.</li>
+            </ul>
+            <div class="tags"><span class="tag">Unity</span><span class="tag">ARCore</span><span class="tag">C#</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== Research ===== -->
-  <section id="research" class="section">
+  <section id="research" class="section" data-chapter="Research" data-num="05" data-scene="papers" data-scene-x="0" data-scene-dim="0.45">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow reveal">Research</span>
-        <h2 class="section-title reveal">Published papers</h2>
-        <p class="section-sub reveal">Three peer-reviewed papers on human-AI interaction, explainable computer vision and AI ethics.</p>
+        <span class="eyebrow"><b>05</b> Research</span>
+        <h2 class="section-title split">Published <span class="serif">papers</span></h2>
+        <p class="section-sub">Three peer-reviewed papers on human-AI interaction, explainable computer vision and AI ethics.</p>
       </div>
-      <div class="papers" data-stagger>
-        <a class="paper reveal" href="https://doi.org/10.1007/978-3-031-99261-2_17" target="_blank" rel="noopener">
-          <div class="paper-venue">AIED 2025<small>Springer CCIS vol. 2590</small></div>
-          <div>
+      <div class="papers">
+        <a class="paper" href="https://doi.org/10.1007/978-3-031-99261-2_17" target="_blank" rel="noopener" data-cursor="Read">
+          <div class="paper-venue"><span class="paper-year">2025</span>AIED<small>Springer CCIS vol. 2590</small></div>
+          <div class="paper-body">
             <h3>AI Coding Assistants in Competitive Programming: Empirical Studies from India on Human-AI Interactions in Learning, Problem Solving, and Curiosity Development Perspectives</h3>
             <div class="authors">Joshi, O., <b>Mundra, K.</b>, Yadav, D., Das, S.</div>
             <p>How Amazon Q and Tabnine change the way students learn and solve problems in timed contests, based on a study at IIT Bombay.</p>
           </div>
           <span class="paper-go"><svg><use href="#i-out"/></svg></span>
         </a>
-        <a class="paper reveal" href="https://doi.org/10.1007/978-981-97-3242-5_20" target="_blank" rel="noopener">
-          <div class="paper-venue">ICDMAI 2024<small>Springer LNNS vol. 997</small></div>
-          <div>
+        <a class="paper" href="https://doi.org/10.1007/978-981-97-3242-5_20" target="_blank" rel="noopener" data-cursor="Read">
+          <div class="paper-venue"><span class="paper-year">2024</span>ICDMAI<small>Springer LNNS vol. 997</small></div>
+          <div class="paper-body">
             <h3>From Pixels to Insight: Enhancing Metallic Component Defect Detection with GLCM Features and AI Explainability</h3>
             <div class="authors">Varsha, A., <b>Mundra, K.</b>, Singh, A., Bhosale, H., Chattopadhyay, C., Valadi, J.</div>
             <p>GLCM texture features and SHAP explanations for detecting surface defects in steel, at 89% accuracy on the NEU dataset.</p>
           </div>
           <span class="paper-go"><svg><use href="#i-out"/></svg></span>
         </a>
-        <a class="paper reveal" href="https://library.apsce.net/index.php/ICCE/article/view/1440" target="_blank" rel="noopener">
-          <div class="paper-venue">ICCE 2023<small>APSCE</small></div>
-          <div>
+        <a class="paper" href="https://library.apsce.net/index.php/ICCE/article/view/1440" target="_blank" rel="noopener" data-cursor="Read">
+          <div class="paper-venue"><span class="paper-year">2023</span>ICCE<small>APSCE</small></div>
+          <div class="paper-body">
             <h3>Fostering Ethics in AI: Perceptions from the Indian AI Curriculum</h3>
             <div class="authors"><b>Mundra, K.</b> et al.</div>
             <p>How AI ethics is taught and understood in Indian AI courses, and where the gaps are.</p>
@@ -435,73 +555,86 @@
   </section>
 
   <!-- ===== Skills ===== -->
-  <section id="skills" class="section">
+  <section id="skills" class="section" data-chapter="Skills" data-num="06" data-scene="orbits" data-scene-x="-3.4" data-scene-dim="0.45">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow reveal">Skills</span>
-        <h2 class="section-title reveal">What I work with</h2>
+        <span class="eyebrow"><b>06</b> Skills</span>
+        <h2 class="section-title split">What I <span class="serif">work with</span></h2>
       </div>
     </div>
-    <div class="marquee reveal" aria-hidden="true">
+    <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span class="chip hot">Python</span><span class="chip">PyTorch</span><span class="chip hot">LLMs</span><span class="chip">Hugging Face</span><span class="chip hot">RAG</span><span class="chip">C</span><span class="chip">Claude API</span><span class="chip hot">Agents &amp; tool calling</span><span class="chip">Transformers</span><span class="chip">Scikit-learn</span><span class="chip hot">NLP</span><span class="chip">Prompt engineering</span>
-        <span class="chip hot">Python</span><span class="chip">PyTorch</span><span class="chip hot">LLMs</span><span class="chip">Hugging Face</span><span class="chip hot">RAG</span><span class="chip">C</span><span class="chip">Claude API</span><span class="chip hot">Agents &amp; tool calling</span><span class="chip">Transformers</span><span class="chip">Scikit-learn</span><span class="chip hot">NLP</span><span class="chip">Prompt engineering</span>
+        <span>LLMs</span><span class="o">RAG</span><span>GraphRAG</span><span class="o">AI Agents</span><span>Tool Calling</span><span class="o">Speech-to-Text</span><span>PyTorch</span><span class="o">Hugging Face</span><span>NLP</span><span class="o">Claude API</span>
       </div>
     </div>
-    <div class="marquee reverse reveal" aria-hidden="true">
-      <div class="marquee-track">
-        <span class="chip">C++</span><span class="chip">SQL</span><span class="chip hot">LiveKit / WebRTC</span><span class="chip">Git</span><span class="chip">Linux</span><span class="chip hot">SLURM GPU clusters</span><span class="chip">PySpark</span><span class="chip">Pandas</span><span class="chip">NetworkX</span><span class="chip hot">Ollama</span><span class="chip">Flask</span><span class="chip">Haskell</span><span class="chip">Unity</span><span class="chip">Figma</span>
-        <span class="chip">C++</span><span class="chip">SQL</span><span class="chip hot">LiveKit / WebRTC</span><span class="chip">Git</span><span class="chip">Linux</span><span class="chip hot">SLURM GPU clusters</span><span class="chip">PySpark</span><span class="chip">Pandas</span><span class="chip">NetworkX</span><span class="chip hot">Ollama</span><span class="chip">Flask</span><span class="chip">Haskell</span><span class="chip">Unity</span><span class="chip">Figma</span>
+    <div class="container skills-layout">
+      <div class="sphere-wrap">
+        <div class="tag-sphere" aria-hidden="true"></div>
+        <div class="sphere-hint">Drag to spin</div>
       </div>
-    </div>
-    <div class="container">
-      <div class="skill-groups" data-stagger>
-        <div class="skill-group reveal"><h3><i></i>AI &amp; ML</h3><ul><li>LLMs, RAG and GraphRAG</li><li>Agents and tool calling</li><li>Fine-tuning Transformers</li><li>PyTorch, Hugging Face</li><li>Scikit-learn, SHAP</li><li>Evaluation: BERTScore, NLI</li></ul></div>
-        <div class="skill-group reveal"><h3><i></i>Languages</h3><ul><li>Python (advanced)</li><li>C++ (advanced)</li><li>C</li><li>Go</li><li>SQL</li><li>Haskell</li></ul></div>
-        <div class="skill-group reveal"><h3><i></i>Systems &amp; tools</h3><ul><li>LiveKit, WebRTC</li><li>Claude API, Ollama</li><li>Git, Linux</li><li>SLURM GPU clusters</li><li>PySpark</li><li>Flask</li></ul></div>
-        <div class="skill-group reveal"><h3><i></i>Data &amp; design</h3><ul><li>Pandas, NumPy</li><li>NetworkX</li><li>Statistical testing</li><li>Unity, ARCore</li><li>Blender</li><li>Figma</li></ul></div>
+      <div class="skill-groups">
+        <div class="skill-group"><h3><i></i>Generative AI and LLMs</h3><p>LLMs, RAG, GraphRAG, Knowledge Graphs, Prompt Engineering, AI Agents, Tool Calling / Function Calling, LLM Evaluation (BERTScore, NLI), Claude API, Ollama</p></div>
+        <div class="skill-group"><h3><i></i>Machine Learning</h3><p>PyTorch, Hugging Face Transformers, Fine-tuning (RoBERTa), scikit-learn, Deep Learning, CNNs (ResNet-18), BiLSTM, Transfer Learning, SHAP (Explainable AI), Statistical Testing</p></div>
+        <div class="skill-group"><h3><i></i>NLP and Speech</h3><p>Natural Language Processing, Speech-to-Text (Whisper, IndicConformer), Voice Activity Detection (Silero VAD), Language Identification, Deepgram, Sentiment Analysis</p></div>
+        <div class="skill-group"><h3><i></i>Programming</h3><p>Python (Advanced), C++ (Advanced), SQL, JavaScript, C, Go, Haskell</p></div>
+        <div class="skill-group"><h3><i></i>Data and Tools</h3><p>Pandas, NumPy, NetworkX, PySpark, Flask, REST APIs, Git, Linux, SLURM, LiveKit / WebRTC, ffmpeg</p></div>
+        <div class="skill-group"><h3><i></i>Design and 3D</h3><p>Unity, ARCore, Blender, Figma</p></div>
       </div>
     </div>
   </section>
 
   <!-- ===== Achievements ===== -->
-  <section id="achievements" class="section">
+  <section id="achievements" class="section" data-chapter="Achievements" data-num="07" data-scene="funnel" data-scene-x="0" data-scene-dim="0.4">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow reveal">Achievements</span>
-        <h2 class="section-title reveal">Problem solving and awards</h2>
+        <span class="eyebrow"><b>07</b> Achievements</span>
+        <h2 class="section-title split">Problem solving <span class="serif">and awards</span></h2>
       </div>
       <div class="achieve-grid">
-        <div class="achieve big reveal" data-animate>
+        <div class="achieve big">
           <div class="achieve-k">HackerRank · Project Euler+</div>
-          <div class="huge">#<span data-count="2932">0</span></div>
+          <div class="huge">#<span class="rank-num" data-from="251755" data-to="2932">251,755</span></div>
           <h3>Global rank out of 251,755 people</h3>
           <p>Number theory, combinatorics and algorithm problems that have to run within strict time and memory limits.</p>
           <div class="mini-stats">
             <div><b>Top 1.2%</b><span>worldwide</span></div>
             <div><b>67 / 73</b><span>solved perfectly</span></div>
           </div>
-          <div class="rank-bar">
-            <div class="rank-track"><div class="rank-fill"></div></div>
-            <div class="rank-labels"><span>251,755</span><span>#1</span></div>
+          <div class="rank-bar"><div class="rank-track"><div class="rank-fill"></div></div><div class="rank-labels"><span>251,755</span><span>#1</span></div></div>
+        </div>
+
+        <div class="achieve tcs">
+          <div class="achieve-k">TCS iON NQT-IT · Oct 2026</div>
+          <div class="gauges">
+            <div class="gauge" data-value="94.2">
+              <svg viewBox="0 0 120 120"><circle class="g-bg" cx="60" cy="60" r="52"/><circle class="g-fg" cx="60" cy="60" r="52"/></svg>
+              <div class="g-val"><span data-count="94.2" data-dec="1">0</span>%</div>
+              <div class="g-lab">Python programming assessment</div>
+            </div>
+            <div class="gauge alt" data-value="83.3">
+              <svg viewBox="0 0 120 120"><circle class="g-bg" cx="60" cy="60" r="52"/><circle class="g-fg" cx="60" cy="60" r="52"/></svg>
+              <div class="g-val"><span data-count="83.3" data-dec="1">0</span>%</div>
+              <div class="g-lab">Overall cognitive score</div>
+            </div>
           </div>
         </div>
-        <div class="achieve reveal">
+
+        <div class="achieve">
           <div class="achieve-k">1st place</div>
           <h3>Bro Code, campus coding contest</h3>
           <p>Won the Computer Science Club's head-to-head programming contest at FLAME with a teammate.</p>
         </div>
-        <div class="achieve reveal">
+        <div class="achieve">
           <div class="achieve-k">Awarded twice</div>
           <h3>Trailblazer Award, FLAME University</h3>
-          <p>2022–23 and 2023–24, for doing well across academics, sport and culture.</p>
+          <p>2022-23 and 2023-24, for doing well across academics, sport and culture.</p>
         </div>
-        <div class="achieve reveal">
+        <div class="achieve">
           <div class="achieve-k">National hackathon</div>
           <h3>UTU Online Hackathon</h3>
-          <p>Reached round 3 of 4 with a Python IoT app that waters plants when nobody is home. <a href="https://drive.google.com/file/d/1yzjLxo0QllkOw5sIkecfV-0D4idjPGV7/view" target="_blank" rel="noopener" style="color:var(--accent-2)">Certificate</a></p>
+          <p>Reached round 3 of 4 with a Python IoT app that waters plants when nobody is home. <a href="https://drive.google.com/file/d/1yzjLxo0QllkOw5sIkecfV-0D4idjPGV7/view" target="_blank" rel="noopener" class="inline-link">Certificate</a></p>
         </div>
-        <div class="achieve reveal">
+        <div class="achieve">
           <div class="achieve-k">Distinction</div>
           <h3>MSc Computer Science, Warwick</h3>
           <p>Graduated with a Distinction in 2026.</p>
@@ -511,26 +644,26 @@
   </section>
 
   <!-- ===== Education ===== -->
-  <section id="education" class="section">
+  <section id="education" class="section" data-chapter="Education" data-num="08" data-scene="pair" data-scene-dim="0.5">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow reveal">Education</span>
-        <h2 class="section-title reveal">Where I studied</h2>
+        <span class="eyebrow"><b>08</b> Education</span>
+        <h2 class="section-title split">Where I <span class="serif">studied</span></h2>
       </div>
-      <div class="edu-grid" data-stagger>
-        <div class="edu reveal">
+      <div class="edu-grid">
+        <div class="edu">
           <span class="edu-badge">Distinction</span>
-          <div class="edu-date">Sept 2025 – Sept 2026 · Coventry, UK</div>
+          <div class="edu-date">Sep 2025 → Sep 2026 · Coventry, UK</div>
           <h3>University of Warwick</h3>
           <div class="edu-deg">MSc Computer Science</div>
           <p>Dissertation on grounding LLMs with knowledge graphs (PersonaGraph).</p>
           <div class="tags"><span class="tag">Machine Learning &amp; AI</span><span class="tag">NLP</span><span class="tag">Agent-Based Systems</span><span class="tag">High Performance Computing</span><span class="tag">Data Analytics</span><span class="tag">Image &amp; Video Analysis</span></div>
         </div>
-        <div class="edu reveal">
-          <div class="edu-date">Aug 2021 – May 2024 · Pune, India</div>
+        <div class="edu">
+          <div class="edu-date">Aug 2021 → May 2024 · Pune, India</div>
           <h3>FLAME University</h3>
-          <div class="edu-deg">BSc (Hons.) Computer Science</div>
-          <p>Trailblazer Award in 2022–23 and 2023–24.</p>
+          <div class="edu-deg">BSc (Hons) Computer Science</div>
+          <p>Trailblazer Award in 2022-23 and 2023-24.</p>
           <div class="tags"><span class="tag">Algorithms</span><span class="tag">Data Structures</span><span class="tag">Distributed Systems</span><span class="tag">Operating Systems</span><span class="tag">Database Systems</span><span class="tag">Software Engineering</span></div>
         </div>
       </div>
@@ -538,42 +671,42 @@
   </section>
 
   <!-- ===== Leadership ===== -->
-  <section id="leadership" class="section">
+  <section id="leadership" class="section" data-chapter="Outside work" data-num="09" data-scene="roles" data-scene-dim="0.5">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow reveal">Outside work</span>
-        <h2 class="section-title reveal">Leadership and volunteering</h2>
+        <span class="eyebrow"><b>09</b> Outside work</span>
+        <h2 class="section-title split">Leadership <span class="serif">and volunteering</span></h2>
       </div>
-      <div class="lead-grid" data-stagger>
-        <div class="lead reveal"><div class="lead-icon" aria-hidden="true">🤝</div><div><h3>Technical Head</h3><div class="lead-org">Caritas Kolkata · student-led NGO</div><p>The group delivered food and supplies in Kolkata during COVID-19. I built its website from scratch in HTML, CSS and JavaScript and led a team of 5.</p></div></div>
-        <div class="lead reveal"><div class="lead-icon" aria-hidden="true">📝</div><div><h3>Technical Supervisor</h3><div class="lead-org">Verity Today · student publishing platform</div><p>Rebuilt the website of a platform that publishes stories and blogs by young writers.</p></div></div>
-        <div class="lead reveal"><div class="lead-icon" aria-hidden="true">🎨</div><div><h3>Co-founder &amp; Technical Supervisor</h3><div class="lead-org">Dezyne Art · student art platform</div><p>Co-founded a platform that gives young digital and fine artists a place to show their work, and ran its technical side.</p></div></div>
-        <div class="lead reveal"><div class="lead-icon" aria-hidden="true">🐾</div><div><h3>On-field Volunteer, 150 hours</h3><div class="lead-org"><a href="https://animalpeoplealliancekolkata.org" target="_blank" rel="noopener">Animal People Alliance Kolkata</a></div><p>Field work caring for neglected street animals in Kolkata.</p></div></div>
+      <div class="lead-grid">
+        <div class="lead"><div class="lead-icon" aria-hidden="true">🤝</div><div><h3>Technical Head</h3><div class="lead-org">Caritas Kolkata · student-led NGO</div><p>The group delivered food and supplies in Kolkata during COVID-19. I built its website from scratch in HTML, CSS and JavaScript and led a team of 5.</p></div></div>
+        <div class="lead"><div class="lead-icon" aria-hidden="true">📝</div><div><h3>Technical Supervisor</h3><div class="lead-org">Verity Today · student publishing platform</div><p>Rebuilt the website of a platform that publishes stories and blogs by young writers.</p></div></div>
+        <div class="lead"><div class="lead-icon" aria-hidden="true">🎨</div><div><h3>Co-founder &amp; Technical Supervisor</h3><div class="lead-org">Dezyne Art · student art platform</div><p>Co-founded a platform that gives young digital and fine artists a place to show their work, and ran its technical side.</p></div></div>
+        <div class="lead"><div class="lead-icon" aria-hidden="true">🐾</div><div><h3>On-field Volunteer, 150 hours</h3><div class="lead-org"><a href="https://animalpeoplealliancekolkata.org" target="_blank" rel="noopener">Animal People Alliance Kolkata</a></div><p>Field work caring for neglected street animals in Kolkata.</p></div></div>
       </div>
-      <div class="hobbies reveal">
+      <div class="hobbies">
         <span class="chip hot">🕺 Hip hop · President, Dance Club</span><span class="chip">🏀 Basketball</span><span class="chip">🏸 Badminton</span><span class="chip">🛼 Skating</span><span class="chip">🏊 Swimming</span><span class="chip">♟️ Chess</span>
       </div>
     </div>
   </section>
 
   <!-- ===== Contact ===== -->
-  <section id="contact" class="contact">
+  <section id="contact" class="contact" data-chapter="Contact" data-num="10" data-scene="core" data-scene-x="0" data-scene-y="2.2" data-scene-dim="0.9">
     <div class="container">
-      <span class="eyebrow reveal">Contact</span>
-      <h2 class="contact-title reveal">Let's <span class="grad">talk.</span></h2>
-      <p class="contact-sub reveal">I'm looking for AI, ML and GenAI engineering roles in India and can start right away. Email is the quickest way to reach me.</p>
-      <div class="contact-actions reveal">
+      <span class="eyebrow"><b>10</b> Contact</span>
+      <h2 class="contact-title"><span class="ct-line">Let's</span> <span class="ct-line serif grad">talk.</span></h2>
+      <p class="contact-sub">I'm looking for AI, ML and GenAI engineering roles, I'm open to relocation and I can join immediately. Email is the quickest way to reach me.</p>
+      <div class="contact-actions">
         <a href="mailto:kushal.mundra2607@gmail.com" class="btn btn-primary" data-magnetic><svg><use href="#i-mail"/></svg> kushal.mundra2607@gmail.com</a>
         <button class="btn btn-ghost copy-btn" data-email="kushal.mundra2607@gmail.com" data-magnetic><svg><use href="#i-copy"/></svg> <span>Copy email</span></button>
         <a href="tel:+918777695129" class="btn btn-ghost" data-magnetic><svg><use href="#i-phone"/></svg> +91 87776 95129</a>
       </div>
-      <div class="socials reveal">
-        <a class="social" href="https://www.linkedin.com/in/kushal-mundra-425345220/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
-        <a class="social" href="https://github.com/kushalMundra26" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
-        <a class="social" href="http://www.instagram.com/kushal_mundra26" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
+      <div class="socials">
+        <a class="social" href="https://www.linkedin.com/in/kushal-mundra-425345220/" target="_blank" rel="noopener" aria-label="LinkedIn" data-magnetic><svg><use href="#i-linkedin"/></svg></a>
+        <a class="social" href="https://github.com/kushalMundra26" target="_blank" rel="noopener" aria-label="GitHub" data-magnetic><svg><use href="#i-github"/></svg></a>
+        <a class="social" href="http://www.instagram.com/kushal_mundra26" target="_blank" rel="noopener" aria-label="Instagram" data-magnetic><svg><use href="#i-insta"/></svg></a>
       </div>
 
-      <form id="message-form" class="message-form reveal" data-to="kushal.mundra2607@gmail.com">
+      <form id="message-form" class="message-form" data-to="kushal.mundra2607@gmail.com">
         <div class="row">
           <label>Name<input name="name" type="text" required autocomplete="name" /></label>
           <label>Email<input name="email" type="email" required autocomplete="email" /></label>
@@ -589,12 +722,22 @@
 
 <footer>
   <div class="container">
-    <span>© <span id="year">2026</span> Kushal Mundra</span>
-    <a href="#top" class="to-top">Back to top ↑</a>
+    <div class="footer-name">Kushal <span class="serif">Mundra</span></div>
+    <div class="footer-row">
+      <span>© <span id="year">2026</span> Kushal Mundra</span>
+      <span class="footer-local">Kolkata · <span class="clock">--:--</span> IST</span>
+      <a href="#top" class="to-top" data-cursor="Top">Back to top ↑</a>
+    </div>
   </div>
 </footer>
 
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="js/main.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="js/scene.js?v=13" defer></script>
+<script src="js/main.js?v=13" defer></script>
 </body>
 </html>
